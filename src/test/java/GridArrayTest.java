@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import java.awt.*;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
@@ -16,7 +17,7 @@ public class GridArrayTest {
     public void testChangeValue() {
         int[][] testGrid = {{1}};
         GridArray currentGrid = new GridArray(1, 1);
-        currentGrid.changeValue(0, 0);
+        currentGrid.changeValue(new Point(0, 0));
         assertEquals(testGrid, currentGrid.getGrid());
 
     }

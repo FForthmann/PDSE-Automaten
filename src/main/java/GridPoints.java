@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.HashMap;
 
-public class GridPoints {
+public class GridPoints implements IGrid {
     private final int length;
     private final int depth;
     private HashMap<Point, Boolean> grid;
@@ -11,7 +11,8 @@ public class GridPoints {
         this.depth = depth;
         createGrid();
     }
-    private void createGrid(){
+
+    private void createGrid() {
         grid = new HashMap<>();
         for (int i = 0;i < depth; i++){
             for (int j = 0; j < length; j++){
