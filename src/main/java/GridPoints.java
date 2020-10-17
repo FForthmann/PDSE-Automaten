@@ -12,19 +12,6 @@ public class GridPoints extends Grid implements IGrid {
         createGrid();
     }
 
-    private void createGrid() {
-        grid = new HashMap<>();
-        for (int i = 0; i < depth; i++) {
-            for (int j = 0; j < length; j++) {
-                grid.put(new Point(j, i), false);
-            }
-        }
-    }
-    @Override
-    boolean checkFieldExists(int x, int y) {
-        return x >= 0 && x <= depth - 1 && y >= 0 && y <= length - 1;
-    }
-
     @Override
     public void changeValue(Point position) {
         if (getGrid().get(position).equals(false)) {
@@ -37,17 +24,28 @@ public class GridPoints extends Grid implements IGrid {
     }
 
     @Override
+    public HashMap<Point, Boolean> getGrid() {
+        return grid;
+    }
+
+    @Override
     public boolean getValue(Point position) {
         return getGrid().get(position);
     }
 
     @Override
-    public HashMap<Point, Boolean> getGrid() {
-        return grid;
+    boolean checkFieldExists(int x, int y) {
+        return x >= 0 && x <= depth - 1 && y >= 0 && y <= length - 1;
     }
 
-
-
+    private void createGrid() {
+        grid = new HashMap<>();
+        for (int i = 0; i < depth; i++) {
+            for (int j = 0; j < length; j++) {
+                grid.put(new Point(j, i), false);
+            }
+        }
+    }
 
 
 }
