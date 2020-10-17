@@ -27,6 +27,10 @@ public class GridArray extends Grid implements IGrid {
             Arrays.fill(length, 0);
         }
     }
+    @Override
+    boolean checkFieldExists(int x, int y) {
+        return x >= 0 && x <= depth - 1 && y >= 0 && y <= length - 1;
+    }
 
     @Override
     public void changeValue(Point position) {
