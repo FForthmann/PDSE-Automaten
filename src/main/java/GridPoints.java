@@ -14,7 +14,11 @@ public class GridPoints extends Grid implements IGrid {
 
     @Override
     public void changeValue(Point position) {
-        getGrid().replace(position, getGrid().get(position).equals(false));
+        if (getGrid().get(position).equals(false)) {
+            getGrid().replace(position, true);
+        } else {
+            getGrid().replace(position, false);
+        }
 
 
     }
