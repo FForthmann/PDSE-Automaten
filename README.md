@@ -1,8 +1,6 @@
 # hausarbeit_i143_gamradt_cc 
 
-Hausarbeit für PDSE...
-
-##Rules-Notizen
+## Rules-Notizen
 
 Game Type:
 
