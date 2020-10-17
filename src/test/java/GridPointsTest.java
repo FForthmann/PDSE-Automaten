@@ -16,7 +16,7 @@ public class GridPointsTest {
     }
 
     @Test
-    public void testgetVonNeumannNeighbors() {
+    public void testChangeValue() {
         HashMap<Point, Boolean> testGrid = new HashMap<>();
         testGrid.put(new Point(0, 0), true);
         GridPoints currentGrid = new GridPoints(1, 1);
@@ -24,7 +24,8 @@ public class GridPointsTest {
         assertEquals(testGrid, currentGrid.getGrid());
     }
 
-    public void testNeighbors() {
+    @Test
+    public void testGetVonNeumannNeighbors() {
         ArrayList<Point> expectedValues = new ArrayList<>();
         expectedValues.add(new Point(0, 0));
         expectedValues.add(new Point(1, 1));
@@ -36,5 +37,18 @@ public class GridPointsTest {
 
     }
 
+    @Test
+    public void testGetMooreNeighbors() {
+        ArrayList<Point> expectedValues = new ArrayList<>();
+        expectedValues.add(new Point(0, 0));
+        expectedValues.add(new Point(1, 1));
+        expectedValues.add(new Point(2, 0));
+        expectedValues.add(new Point(0, 2));
+        expectedValues.add(new Point(2, 2));
+        GridPoints currentGrid = new GridPoints(4, 4);
+
+        assertTrue(expectedValues.containsAll(currentGrid.getMooreNeighbors(new Point(1, 0)))
+                && currentGrid.getMooreNeighbors(new Point(1, 0)).size() == expectedValues.size());
+    }
 
 }
