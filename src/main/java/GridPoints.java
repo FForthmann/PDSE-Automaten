@@ -1,8 +1,7 @@
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class GridPoints implements IGrid {
+public class GridPoints extends Grid implements IGrid {
     private final int length;
     private final int depth;
     private HashMap<Point, Boolean> grid;
@@ -22,10 +21,7 @@ public class GridPoints implements IGrid {
         }
     }
 
-    private boolean checkFieldExists(int x, int y) {
-        return x >= 0 && x <= depth - 1 && y >= 0 && y <= length - 1;
-    }
-
+    @Override
     public void changeValue(Point position) {
         if (getGrid().get(position).equals(false)) {
             getGrid().replace(position, true);
@@ -36,55 +32,18 @@ public class GridPoints implements IGrid {
 
     }
 
+    @Override
+    public boolean getValue(Point position) {
+        return getGrid().get(position);
+    }
+
+    @Override
     public HashMap<Point, Boolean> getGrid() {
         return grid;
     }
 
-    public ArrayList<Point> getMooreNeighbors(Point position) {
-        ArrayList<Point> neighbors = new ArrayList<>();
-        if (checkFieldExists(position.x - 1, position.y - 1)) {
-            neighbors.add(new Point(position.x - 1, position.y - 1));
-        }
-        if (checkFieldExists(position.x - 1, position.y)) {
-            neighbors.add(new Point(position.x - 1, position.y));
-        }
-        if (checkFieldExists(position.x - 1, position.y + 1)) {
-            neighbors.add(new Point(position.x - 1, position.y + 1));
-        }
-        if (checkFieldExists(position.x, position.y - 1)) {
-            neighbors.add(new Point(position.x, position.y - 1));
-        }
-        if (checkFieldExists(position.x, position.y + 1)) {
-            neighbors.add(new Point(position.x, position.y + 1));
-        }
-        if (checkFieldExists(position.x + 1, position.y - 1)) {
-            neighbors.add(new Point(position.x + 1, position.y - 1));
-        }
-        if (checkFieldExists(position.x + 1, position.y)) {
-            neighbors.add(new Point(position.x + 1, position.y));
-        }
-        if (checkFieldExists(position.x + 1, position.y + 1)) {
-            neighbors.add(new Point(position.x + 1, position.y + 1));
-        }
-        return neighbors;
 
-    }
 
-    public ArrayList<Point> getVonNeumannNeighbors(Point position) {
-        ArrayList<Point> neighbors = new ArrayList<>();
-        if (checkFieldExists(position.x + 1, position.y)) {
-            neighbors.add(new Point(position.x + 1, position.y));
-        }
-        if (checkFieldExists(position.x - 1, position.y)) {
-            neighbors.add(new Point(position.x - 1, position.y));
-        }
-        if (checkFieldExists(position.x, position.y + 1)) {
-            neighbors.add(new Point(position.x, position.y + 1));
-        }
-        if (checkFieldExists(position.x, position.y - 1)) {
-            neighbors.add(new Point(position.x, position.y - 1));
-        }
-        return neighbors;
-    }
+
 
 }

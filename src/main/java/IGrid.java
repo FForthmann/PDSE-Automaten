@@ -5,4 +5,6 @@ public interface IGrid {
 
     void changeValue(Point position);
 
+    boolean getValue(Point position);
+
 }

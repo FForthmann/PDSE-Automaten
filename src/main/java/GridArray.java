@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.Arrays;
 
-public class GridArray implements IGrid {
+public class GridArray extends Grid implements IGrid {
     private final int length;
     private final int depth;
     private int[][] grid;
@@ -17,6 +17,7 @@ public class GridArray implements IGrid {
         fillGrid();
     }
 
+    @Override
     public int[][] getGrid() {
         return grid;
     }
@@ -27,6 +28,7 @@ public class GridArray implements IGrid {
         }
     }
 
+    @Override
     public void changeValue(Point position) {
         int depth = position.x;
         int length = position.y;
@@ -36,6 +38,13 @@ public class GridArray implements IGrid {
         } else {
             getGrid()[depth][length] = 0;
         }
-
     }
+
+    @Override
+    public boolean getValue(Point position) {
+        int depth = position.x;
+        int length = position.y;
+        return getGrid()[depth][length] == 0;
+    }
+
 }
