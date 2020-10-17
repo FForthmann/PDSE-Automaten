@@ -27,7 +27,7 @@ public class GridPointsTest {
     public void testNeighbors() {
         ArrayList<Point> expectedValues = new ArrayList<>();
         expectedValues.add(new Point(0, 0));
-        expectedValues.add(new Point(1, 2));
+        expectedValues.add(new Point(1, 1));
         expectedValues.add(new Point(2, 0));
         GridPoints currentGrid = new GridPoints(4, 4);
 
