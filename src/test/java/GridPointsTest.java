@@ -19,6 +19,8 @@ public class GridPointsTest {
         GridPoints currentGrid = new GridPoints(1,1);
         currentGrid.changeValue(new Point(0,0));
         assertEquals(testGrid, currentGrid.getGrid());
+
+
     }
 
 }

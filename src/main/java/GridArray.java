@@ -21,9 +21,17 @@ public class GridArray {
     }
 
     private void fillGrid() {
-        for (int[] length: grid){
+        for (int[] length : grid) {
             Arrays.fill(length, 0);
         }
     }
 
+    public void changeValue(int depth, int length) {
+        if (getGrid()[depth][length] == 0) {
+            getGrid()[depth][length] = 1;
+        } else {
+            getGrid()[depth][length] = 0;
+        }
+
+    }
 }
