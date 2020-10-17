@@ -1,8 +1,9 @@
-import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mock;
 
 import java.util.Properties;
+
+import static org.junit.Assert.assertEquals;
 
 public class ConfigReaderTest {
     @Mock
@@ -24,10 +25,10 @@ public class ConfigReaderTest {
         properties.setProperty("game.loggingType", loggingType);
         properties.setProperty("game.timeToLive", timeToLive);
 
-        Assert.assertEquals(gameType, configReader.getGameType());
-        Assert.assertEquals(model, configReader.getModel());
-        Assert.assertEquals(datastructure, configReader.getDatastructure());
-        Assert.assertEquals(loggingType, configReader.getLoggingType());
-        Assert.assertEquals(timeToLive, configReader.getTimeToLive());
+        assertEquals(gameType, configReader.getGameType());
+        assertEquals(model, configReader.getModel());
+        assertEquals(datastructure, configReader.getDatastructure());
+        assertEquals(loggingType, configReader.getLoggingType());
+        assertEquals(Integer.parseInt(timeToLive), configReader.getTimeToLive());
     }
 }
