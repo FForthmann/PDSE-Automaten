@@ -41,10 +41,10 @@ public class GridPointsTest {
     public void testGetMooreNeighbors() {
         ArrayList<Point> expectedValues = new ArrayList<>();
         expectedValues.add(new Point(0, 0));
+        expectedValues.add(new Point(0, 1));
         expectedValues.add(new Point(1, 1));
+        expectedValues.add(new Point(2, 1));
         expectedValues.add(new Point(2, 0));
-        expectedValues.add(new Point(0, 2));
-        expectedValues.add(new Point(2, 2));
         GridPoints currentGrid = new GridPoints(4, 4);
 
         assertTrue(expectedValues.containsAll(currentGrid.getMooreNeighbors(new Point(1, 0)))
