@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.HashMap;
 
-public class GridPoints {
+public class GridPoints extends Grid implements IGrid {
     private final int length;
     private final int depth;
     private HashMap<Point, Boolean> grid;
@@ -11,25 +11,43 @@ public class GridPoints {
         this.depth = depth;
         createGrid();
     }
-    private void createGrid(){
+
+    private void createGrid() {
         grid = new HashMap<>();
-        for (int i = 0;i < depth; i++){
-            for (int j = 0; j < length; j++){
+        for (int i = 0; i < depth; i++) {
+            for (int j = 0; j < length; j++) {
                 grid.put(new Point(j, i), false);
             }
         }
     }
-    public void changeValue(Point position){
-        if (getGrid().get(position).equals(false)){
+    @Override
+    boolean checkFieldExists(int x, int y) {
+        return x >= 0 && x <= depth - 1 && y >= 0 && y <= length - 1;
+    }
+
+    @Override
+    public void changeValue(Point position) {
+        if (getGrid().get(position).equals(false)) {
             getGrid().replace(position, true);
-        }else{
+        } else {
             getGrid().replace(position, false);
         }
 
 
     }
 
+    @Override
+    public boolean getValue(Point position) {
+        return getGrid().get(position);
+    }
+
+    @Override
     public HashMap<Point, Boolean> getGrid() {
         return grid;
     }
+
+
+
+
+
 }
