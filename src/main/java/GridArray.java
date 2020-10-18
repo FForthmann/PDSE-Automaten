@@ -49,7 +49,33 @@ public class GridArray extends Grid implements IGrid {
     public boolean getValue(Point position) {
         int depth = position.x;
         int length = position.y;
-        return getGrid()[depth][length] == 0;
+        return getGrid()[depth][length] != 0;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+
+            for (int j = 0; j < length; j++) {
+
+                if (getValue(new Point(i, j))) {
+                    stringBuilder.append(1);
+                } else {
+                    stringBuilder.append(0);
+                }
+            }
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public void setValue(Point position, int value) {
+        int depth = position.x;
+        int length = position.y;
+        getGrid()[depth][length] = value;
+    }
+
 
 }

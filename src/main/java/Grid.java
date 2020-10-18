@@ -40,4 +40,3 @@ public abstract class Grid {
         return neighbors;
     }
 }
-//todo methoden shrinken

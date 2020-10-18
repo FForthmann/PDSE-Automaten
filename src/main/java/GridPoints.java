@@ -20,7 +20,6 @@ public class GridPoints extends Grid implements IGrid {
             getGrid().replace(position, false);
         }
 
-
     }
 
     @Override
@@ -44,6 +43,33 @@ public class GridPoints extends Grid implements IGrid {
             for (int j = 0; j < length; j++) {
                 grid.put(new Point(j, i), false);
             }
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+
+            for (int j = 0; j < length; j++) {
+
+                if (getValue(new Point(i, j))) {
+                    stringBuilder.append(1);
+                } else {
+                    stringBuilder.append(0);
+                }
+            }
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public void setValue(Point position, int value) {
+        if (value != 0){
+            getGrid().replace(position, false);
+        }else{
+            getGrid().replace(position, true);
         }
     }
 

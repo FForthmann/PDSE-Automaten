@@ -12,4 +12,8 @@ public interface IGrid {
 
     boolean getValue(Point position);
 
+    String toString();
+
+    void setValue(Point position, int value);
+
 }
