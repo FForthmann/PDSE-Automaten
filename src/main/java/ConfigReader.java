@@ -48,4 +48,4 @@ public class ConfigReader {
         return prop.getProperty("game.terminationType");
     }
 }
-}
+
