@@ -46,5 +46,23 @@ public class GridPoints extends Grid implements IGrid {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+
+            for (int j = 0; j < length; j++) {
+
+                if (getValue(new Point(i, j))) {
+                    stringBuilder.append(1);
+                } else {
+                    stringBuilder.append(0);
+                }
+            }
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
+    }
+
 
 }

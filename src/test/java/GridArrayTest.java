@@ -52,4 +52,12 @@ public class GridArrayTest {
                 && currentGrid.getMooreNeighbors(new Point(1, 0)).size() == expectedValues.size());
     }
 
+    @Test
+    public void testToString() {
+        GridArray currentGrid = new GridArray(4, 4);
+        String testString;
+        testString = "0000" + "\n" + "0000" + "\n" + "0000" + "\n" + "0000" + "\n";
+        assertEquals(testString, currentGrid.toString());
+    }
+
 }
