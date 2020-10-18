@@ -64,5 +64,14 @@ public class GridPoints extends Grid implements IGrid {
         return stringBuilder.toString();
     }
 
+    @Override
+    public void setValue(Point position, int value) {
+        if (value != 0){
+            getGrid().replace(position, false);
+        }else{
+            getGrid().replace(position, true);
+        }
+    }
+
 
 }

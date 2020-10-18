@@ -9,4 +9,6 @@ public interface IGrid {
 
     String toString();
 
+    void setValue(Point position, int value);
+
 }

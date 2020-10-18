@@ -70,4 +70,12 @@ public class GridArray extends Grid implements IGrid {
         return stringBuilder.toString();
     }
 
+    @Override
+    public void setValue(Point position, int value) {
+        int depth = position.x;
+        int length = position.y;
+        getGrid()[depth][length] = value;
+    }
+
+
 }
