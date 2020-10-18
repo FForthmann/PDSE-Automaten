@@ -36,12 +36,16 @@ public class ConfigReader {
         return Integer.parseInt(prop.getProperty("game.timeToLive"));
     }
 
-    public int getLength() {
+    public int getGridLength() {
         return Integer.parseInt(prop.getProperty("game.grid.length"));
     }
 
-    public int getWidth() {
+    public int getGridWidth() {
         return Integer.parseInt(prop.getProperty("game.grid.width"));
     }
 
+    public String getTerminationType(){
+        return prop.getProperty("game.terminationType");
+    }
+}
 }

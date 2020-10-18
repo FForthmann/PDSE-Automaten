@@ -18,23 +18,26 @@ public class ConfigReaderTest {
         String datastructure = "3";
         String loggingType = "4";
         String timeToLive = "5";
-        String length = "6";
-        String width = "7";
+        String gridLength = "6";
+        String gridWidth = "7";
+        String terminationType = "8";
 
         properties.setProperty("game.type", gameType);
         properties.setProperty("game.model", model);
         properties.setProperty("game.datastructure", datastructure);
         properties.setProperty("game.loggingType", loggingType);
         properties.setProperty("game.timeToLive", timeToLive);
-        properties.setProperty("game.grid.length", length);
-        properties.setProperty("game.grid.width", width);
+        properties.setProperty("game.grid.length", gridLength);
+        properties.setProperty("game.grid.width", gridWidth);
+        properties.setProperty("game.terminationType", terminationType);
 
         assertEquals(gameType, configReader.getGameType());
         assertEquals(model, configReader.getModel());
         assertEquals(datastructure, configReader.getDatastructure());
         assertEquals(loggingType, configReader.getLoggingType());
         assertEquals(Integer.parseInt(timeToLive), configReader.getTimeToLive());
-        assertEquals(Integer.parseInt(length), configReader.getLength());
-        assertEquals(Integer.parseInt(width), configReader.getWidth());
+        assertEquals(Integer.parseInt(gridLength), configReader.getGridLength());
+        assertEquals(Integer.parseInt(gridWidth), configReader.getGridWidth());
+        assertEquals(terminationType, configReader.getTerminationType());
     }
 }
