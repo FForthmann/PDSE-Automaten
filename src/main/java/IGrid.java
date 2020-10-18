@@ -7,4 +7,6 @@ public interface IGrid {
 
     boolean getValue(Point position);
 
+    String toString();
+
 }
