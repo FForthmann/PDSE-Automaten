@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Grid {
+public abstract class Grid {
 
     public ArrayList<Point> getMooreNeighbors(Point position) {
         ArrayList<Point> neighbors = new ArrayList<>();
@@ -52,5 +52,15 @@ public class Grid {
         }
         return neighbors;
     }
+
+    public int countMooreActiveNeighbors(Point position){
+        return (int) getMooreNeighbors(position).stream().filter(this::getValue).count();
+    }
+
+    public int countvonNeumannActiveNeighbors(Point position){
+        return (int) getVonNeumannNeighbors(position).stream().filter(this::getValue).count();
+    }
+
+     abstract boolean getValue(Point position);
 }
-//todo methoden shrinken
+

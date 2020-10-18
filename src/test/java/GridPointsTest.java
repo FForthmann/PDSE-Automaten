@@ -51,4 +51,5 @@ public class GridPointsTest {
                 && currentGrid.getMooreNeighbors(new Point(1, 0)).size() == expectedValues.size());
     }
 
+
 }
