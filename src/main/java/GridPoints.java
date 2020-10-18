@@ -20,7 +20,6 @@ public class GridPoints extends Grid implements IGrid {
             getGrid().replace(position, false);
         }
 
-
     }
 
     @Override
