@@ -71,10 +71,10 @@ public class GridArray extends Grid implements IGrid {
     }
 
     @Override
-    public void setValue(Point position, int value) {
+    public void setValue(Point position, boolean value) {
         int depth = position.x;
         int length = position.y;
-        getGrid()[depth][length] = value;
+        getGrid()[depth][length] = value ? 1 : 0;
     }
 
 
