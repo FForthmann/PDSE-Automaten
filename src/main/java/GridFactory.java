@@ -3,11 +3,10 @@ public class GridFactory {
     private final int length;
     private final int datastructure;
 
-    public GridFactory(int length, int depth) {
+    public GridFactory(int length, int depth, String datastructure) {
         this.depth = depth;
         this.length = length;
-        ConfigReader configReader = new ConfigReader();
-        this.datastructure = Integer.parseInt(configReader.getDatastructure());
+        this.datastructure = Integer.parseInt(datastructure);
     }
 
     public IGrid getGrid() {
@@ -16,5 +15,6 @@ public class GridFactory {
         } else
             return new GridPoints(length, depth);
     }
+
 
 }
