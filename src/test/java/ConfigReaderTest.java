@@ -15,19 +15,19 @@ public class ConfigReaderTest {
 
         String gameType = "1";
         String model = "2";
-        String datastructure = "3";
+        String dataStructure = "3";
         String loggingType = "4";
         String timeToLive = "5";
 
         properties.setProperty("game.type", gameType);
         properties.setProperty("game.model", model);
-        properties.setProperty("game.datastructure", datastructure);
+        properties.setProperty("game.dataStructure", dataStructure);
         properties.setProperty("game.loggingType", loggingType);
         properties.setProperty("game.timeToLive", timeToLive);
 
         assertEquals(gameType, configReader.getGameType());
         assertEquals(model, configReader.getModel());
-        assertEquals(datastructure, configReader.getDatastructure());
+        assertEquals(dataStructure, configReader.getDatastructure());
         assertEquals(loggingType, configReader.getLoggingType());
         assertEquals(Integer.parseInt(timeToLive), configReader.getTimeToLive());
     }
