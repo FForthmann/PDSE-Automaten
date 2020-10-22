@@ -33,6 +33,11 @@ public class GridPoints extends Grid implements IGrid {
     }
 
     @Override
+    public void setValue(Point position, boolean value) {
+        getGrid().replace(position, value);
+    }
+
+    @Override
     boolean checkFieldExists(int x, int y) {
         return x >= 0 && x <= depth - 1 && y >= 0 && y <= length - 1;
     }
@@ -63,15 +68,7 @@ public class GridPoints extends Grid implements IGrid {
         }
         return stringBuilder.toString();
     }
-
-    @Override
-    public void setValue(Point position, int value) {
-        if (value != 0){
-            getGrid().replace(position, false);
-        }else{
-            getGrid().replace(position, true);
-        }
-    }
-
-
 }
+
+
+

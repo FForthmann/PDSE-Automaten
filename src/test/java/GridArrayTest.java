@@ -4,8 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class GridArrayTest {
 
@@ -59,5 +58,15 @@ public class GridArrayTest {
         testString = "0000" + "\n" + "0000" + "\n" + "0000" + "\n" + "0000" + "\n";
         assertEquals(testString, currentGrid.toString());
     }
+
+    @Test
+    public void testSetValue(){
+        ArrayList<Point> expectedValues = new ArrayList<>();
+        GridArray currentGrid = new GridArray(4, 4);
+        assertFalse(currentGrid.getValue(new Point(0,0)));
+        currentGrid.setValue(new Point(0,0), true);
+        assertTrue(currentGrid.getValue(new Point(0,0)));
+    }
+
 
 }
