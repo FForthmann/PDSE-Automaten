@@ -1,4 +1,4 @@
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.FileOutputStream;
@@ -19,8 +19,8 @@ public class ConfigReaderTest {
     private final static String GRID_WIDTH = "7";
     private final static String TERMINATION_TYPE = "8";
 
-    @Before
-    public void generateTestConfig() throws IOException {
+    @BeforeClass
+    public static void generateTestConfig() throws IOException {
         Properties properties = new Properties();
 
         properties.setProperty("game.type", GAME_TYPE);
@@ -56,7 +56,6 @@ public class ConfigReaderTest {
     @Test(expected = RuntimeException.class)
     public void readNotExistingConfigFile() {
         ConfigReader configReader = new ConfigReader("notExistent.properties");
-
         configReader.getGameType();
     }
 }
