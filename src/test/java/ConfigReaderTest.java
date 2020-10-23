@@ -1,11 +1,10 @@
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.*;
-import java.lang.annotation.Repeatable;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.IOException;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,15 +12,15 @@ public class ConfigReaderTest {
 
     private final static String GAME_TYPE = "1";
     private final static String MODEL = "2";
-    private static final String DATASTRUCTURE = "3";
+    private final static String DATASTRUCTURE = "3";
     private final static String LOGGING_TYPE = "4";
     private final static String TIME_TO_LIVE = "5";
     private final static String GRID_LENGTH = "6";
     private final static String GRID_WIDTH = "7";
     private final static String TERMINATION_TYPE = "8";
 
-    @BeforeClass
-    public static void doBefore() throws IOException, InterruptedException {
+    @Before
+    public void generateTestConfig() throws IOException {
         Properties properties = new Properties();
 
         properties.setProperty("game.type", GAME_TYPE);
@@ -35,11 +34,9 @@ public class ConfigReaderTest {
 
         // Changing String to ByteArray and getting it into the right format
         byte[] bytes = properties.toString().replaceAll(",", "\n").replaceFirst("\\{", "").replaceAll("}", "").replaceAll(" ", "").getBytes();
-        try (OutputStream outputStream = new FileOutputStream("src\\main\\resources\\configTest.properties")) {
+        try (OutputStream outputStream = new FileOutputStream("src\\test\\java\\resources\\configTest.properties")) {
             outputStream.write(bytes);
         }
-
-        TimeUnit.SECONDS.sleep(10);
     }
 
     @Test
