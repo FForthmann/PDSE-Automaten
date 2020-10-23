@@ -4,11 +4,10 @@ import java.util.Properties;
 public class ConfigReader {
 
     private final Properties prop = new Properties();
-    private static final String PROPERTIES_FILE_NAME = "config.properties";
 
-    public ConfigReader() {
+    public ConfigReader(String propertiesFileName) {
         try {
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(PROPERTIES_FILE_NAME);
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propertiesFileName);
             prop.load(inputStream);
         } catch (Exception e) {
             // LOGGER.error("The properties file with the name '{}' could not be found. Closing the program without sending a file", PROPERTIES_FILE_NAME);
@@ -44,7 +43,7 @@ public class ConfigReader {
         return Integer.parseInt(prop.getProperty("game.grid.width"));
     }
 
-    public String getTerminationType(){
+    public String getTerminationType() {
         return prop.getProperty("game.terminationType");
     }
 }
