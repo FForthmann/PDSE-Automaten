@@ -52,4 +52,11 @@ public class ConfigReaderTest {
         assertEquals(Integer.parseInt(GRID_WIDTH), configReader.getGridWidth());
         assertEquals(TERMINATION_TYPE, configReader.getTerminationType());
     }
+
+    @Test(expected = RuntimeException.class)
+    public void readNotExistingConfigFile() {
+        ConfigReader configReader = new ConfigReader("notExistent.properties");
+
+        configReader.getGameType();
+    }
 }
