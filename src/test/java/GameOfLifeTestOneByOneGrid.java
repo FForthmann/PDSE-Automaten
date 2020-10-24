@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 
 public class GameOfLifeTestOneByOneGrid {
 
-    GridFactory gridFactory = new GridFactory(1, 1, "1");
+    GridFactory gridFactory = new GridFactory(1, 1, "GridArray");
     IGrid grid = gridFactory.getGrid();
     Point point = new Point(0, 0);
 
