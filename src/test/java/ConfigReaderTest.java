@@ -1,34 +1,93 @@
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mockito.Mock;
 
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.IOException;
 import java.util.Properties;
 
 import static org.junit.Assert.assertEquals;
 
 public class ConfigReaderTest {
-    @Mock
-    Properties properties = new Properties();
+
+    private final static String GAME_TYPE = "1";
+    private final static String MODEL = "2";
+    private final static String DATASTRUCTURE = "3";
+    private final static String LOGGING_TYPE = "4";
+    private final static String TIME_TO_LIVE = "5";
+    private final static String GRID_LENGTH = "6";
+    private final static String GRID_WIDTH = "7";
+    private final static String TERMINATION_TYPE = "8";
+
+    private final static String ALTERNATIVE_GAME_TYPE = "A";
+    private final static String ALTERNATIVE_MODEL = "B";
+    private final static String ALTERNATIVE_DATASTRUCTURE = "C";
+    private final static String ALTERNATIVE_LOGGING_TYPE = "D";
+    private final static String ALTERNATIVE_TIME_TO_LIVE = "10";
+    private final static String ALTERNATIVE_GRID_LENGTH = "20";
+    private final static String ALTERNATIVE_GRID_WIDTH = "30";
+    private final static String ALTERNATIVE_TERMINATION_TYPE = "H";
+
+    @BeforeClass
+    public static void generateTestConfig() throws IOException {
+        Properties properties = new Properties();
+
+        properties.setProperty("game.type", GAME_TYPE);
+        properties.setProperty("game.model", MODEL);
+        properties.setProperty("game.datastructure", DATASTRUCTURE);
+        properties.setProperty("game.loggingType", LOGGING_TYPE);
+        properties.setProperty("game.timeToLive", TIME_TO_LIVE);
+        properties.setProperty("game.grid.length", GRID_LENGTH);
+        properties.setProperty("game.grid.width", GRID_WIDTH);
+        properties.setProperty("game.terminationType", TERMINATION_TYPE);
+
+        // Changing String to ByteArray and getting it into the right format
+        byte[] bytes = properties.toString().replaceAll(",", "\n").replaceFirst("\\{", "").replaceAll("}", "").replaceAll(" ", "").getBytes();
+        try (OutputStream outputStream = new FileOutputStream("src\\test\\java\\resources\\configTest.properties")) {
+            outputStream.write(bytes);
+        }
+    }
 
     @Test
     public void readPropertiesWithValues() {
-        ConfigReader configReader = new ConfigReader();
+        ConfigReader configReader = new ConfigReader("configTest.properties");
 
-        String gameType = "1";
-        String model = "2";
-        String datastructure = "3";
-        String loggingType = "4";
-        String timeToLive = "5";
+        assertEquals(GAME_TYPE, configReader.getGameType());
+        assertEquals(MODEL, configReader.getModel());
+        assertEquals(DATASTRUCTURE, configReader.getDatastructure());
+        assertEquals(LOGGING_TYPE, configReader.getLoggingType());
+        assertEquals(Integer.parseInt(TIME_TO_LIVE), configReader.getTimeToLive());
+        assertEquals(Integer.parseInt(GRID_LENGTH), configReader.getGridLength());
+        assertEquals(Integer.parseInt(GRID_WIDTH), configReader.getGridWidth());
+        assertEquals(TERMINATION_TYPE, configReader.getTerminationType());
+    }
 
-        properties.setProperty("game.type", gameType);
-        properties.setProperty("game.model", model);
-        properties.setProperty("game.datastructure", datastructure);
-        properties.setProperty("game.loggingType", loggingType);
-        properties.setProperty("game.timeToLive", timeToLive);
+    @Test(expected = RuntimeException.class)
+    public void readNotExistingConfigFile() {
+        ConfigReader configReader = new ConfigReader("notExistent.properties");
+        configReader.getGameType();
+    }
 
-        assertEquals(gameType, configReader.getGameType());
-        assertEquals(model, configReader.getModel());
-        assertEquals(datastructure, configReader.getDatastructure());
-        assertEquals(loggingType, configReader.getLoggingType());
-        assertEquals(Integer.parseInt(timeToLive), configReader.getTimeToLive());
+    @Test
+    public void changePropertyValues() {
+        ConfigReader configReader = new ConfigReader("configTest.properties");
+
+        configReader.setGameType(ALTERNATIVE_GAME_TYPE);
+        configReader.setModel(ALTERNATIVE_MODEL);
+        configReader.setDatastructure(ALTERNATIVE_DATASTRUCTURE);
+        configReader.setLoggingType(ALTERNATIVE_LOGGING_TYPE);
+        configReader.setTimeToLive(ALTERNATIVE_TIME_TO_LIVE);
+        configReader.setGridLength(ALTERNATIVE_GRID_LENGTH);
+        configReader.setGridWidth(ALTERNATIVE_GRID_WIDTH);
+        configReader.setTerminationType(ALTERNATIVE_TERMINATION_TYPE);
+
+        assertEquals(ALTERNATIVE_GAME_TYPE, configReader.getGameType());
+        assertEquals(ALTERNATIVE_MODEL, configReader.getModel());
+        assertEquals(ALTERNATIVE_DATASTRUCTURE, configReader.getDatastructure());
+        assertEquals(ALTERNATIVE_LOGGING_TYPE, configReader.getLoggingType());
+        assertEquals(Integer.parseInt(ALTERNATIVE_TIME_TO_LIVE), configReader.getTimeToLive());
+        assertEquals(Integer.parseInt(ALTERNATIVE_GRID_LENGTH), configReader.getGridLength());
+        assertEquals(Integer.parseInt(ALTERNATIVE_GRID_WIDTH), configReader.getGridWidth());
+        assertEquals(ALTERNATIVE_TERMINATION_TYPE, configReader.getTerminationType());
     }
 }
