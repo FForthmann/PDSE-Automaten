@@ -23,7 +23,7 @@ public class ConfigReader {
     }
 
     public String getDatastructure() {
-        return prop.getProperty("game.datastructure");
+        return prop.getProperty("game.dataStructure");
     }
 
     public String getLoggingType() {
