@@ -28,15 +28,15 @@ public class ParityTestSetAlive {
         when(configReader.getModel()).thenReturn("vonNeumann");
         Parity parity = new Parity(configReader);
         IGrid stepGrid = parity.step(grid);
-        assertTrue(stepGrid.getValue(createPoint(1, 1)) == false);
-        assertTrue(stepGrid.getValue(createPoint(0, 0)) == true);
+        stepGrid.getValue(createPoint(0, 2));
         assertTrue(stepGrid.getValue(createPoint(0, 1)) == true);
-        assertTrue(stepGrid.getValue(createPoint(0, 2)) == true);
+        assertTrue(stepGrid.getValue(createPoint(0, 2)) == false);
         assertTrue(stepGrid.getValue(createPoint(1, 0)) == true);
+        assertTrue(stepGrid.getValue(createPoint(1, 1)) == false);
         assertTrue(stepGrid.getValue(createPoint(1, 2)) == true);
-        assertTrue(stepGrid.getValue(createPoint(2, 0)) == true);
+        assertTrue(stepGrid.getValue(createPoint(2, 0)) == false);
         assertTrue(stepGrid.getValue(createPoint(2, 1)) == true);
-        assertTrue(stepGrid.getValue(createPoint(2, 2)) == true);
+        assertTrue(stepGrid.getValue(createPoint(2, 2)) == false);
     }
 
 
