@@ -14,18 +14,18 @@ public class GameOfLife implements IGameType{
 
     @Override
     public IGrid step(IGrid oldGrid) throws Exception {
-        IGrid newGrid = oldGrid;
+        IGrid newGrid = oldGrid; //TODO grid kopieren anstatt zu pointen
         Point point;
         if ("Moore".equals(configReader.getModel())) {
-            for (int length = 0; length < configReader.getLength(); length++) {
-                for (int width = 0; width < configReader.getWidth(); width++) {
+            for (int length = 0; length < configReader.getGridLength(); length++) {
+                for (int width = 0; width < configReader.getGridWidth(); width++) {
                     point = new Point(length, width);
                     newGrid.setValue(point, getPointStatus(oldGrid.getValue(point), oldGrid.countMooreActiveNeighbors(point)));
                 }
             }
         } else if ("vonNeumann".equals(configReader.getModel())) {
-            for (int length = 0; length < configReader.getLength(); length++) {
-                for (int width = 0; width < configReader.getWidth(); width++) {
+            for (int length = 0; length < configReader.getGridLength(); length++) {
+                for (int width = 0; width < configReader.getGridWidth(); width++) {
                     point = new Point(length, width);
                     newGrid.setValue(point, getPointStatus(oldGrid.getValue(point), oldGrid.countvonNeumannActiveNeighbors(point)));
                 }

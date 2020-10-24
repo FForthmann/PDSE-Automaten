@@ -16,4 +16,8 @@ public interface IGrid {
 
     void setValue(Point position, boolean value);
 
+    public int countMooreActiveNeighbors(Point position);
+
+    public int countvonNeumannActiveNeighbors(Point position);
+
 }

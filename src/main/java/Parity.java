@@ -12,11 +12,11 @@ public class Parity implements IGameType {
     }
 
     public IGrid step(IGrid oldGrid) throws Exception {
-        IGrid newGrid = (IGrid) oldGrid.clone();
+        IGrid newGrid = (IGrid) oldGrid;//.clone; //TODO Grid kopieren anstatt zu pointen
         if ("vonNeumann".equals(configReader.getModel())) {
             Point point;
-            for (int length = 0; length < configReader.getLength(); length++) {
-                for (int width = 0; width < configReader.getWidth(); width++) {
+            for (int length = 0; length < configReader.getGridLength(); length++) {
+                for (int width = 0; width < configReader.getGridWidth(); width++) {
                     point = new Point(length, width);
                     newGrid.setValue(point, oldGrid.countvonNeumannActiveNeighbors(point) % 2 == 1);
                 }

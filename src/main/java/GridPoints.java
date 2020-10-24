@@ -51,6 +51,7 @@ public class GridPoints extends Grid implements IGrid {
         }
     }
 
+    //TODO Duplicate Code entfernen
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

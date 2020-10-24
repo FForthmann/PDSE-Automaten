@@ -52,6 +52,7 @@ public class GridArray extends Grid implements IGrid {
         return getGrid()[depth][length] != 0;
     }
 
+    //TODO Duplicate Code entfernen
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

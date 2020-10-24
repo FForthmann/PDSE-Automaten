@@ -40,14 +40,14 @@ public abstract class Grid {
         return neighbors;
     }
 
-    public int countMooreActiveNeighbors(Point position){
+    public int countMooreActiveNeighbors(Point position) {
         return (int) getMooreNeighbors(position).stream().filter(this::getValue).count();
     }
 
-    public int countvonNeumannActiveNeighbors(Point position){
+    public int countvonNeumannActiveNeighbors(Point position) {
         return (int) getVonNeumannNeighbors(position).stream().filter(this::getValue).count();
     }
 
-     abstract boolean getValue(Point position);
+    abstract boolean getValue(Point position);
 }
 

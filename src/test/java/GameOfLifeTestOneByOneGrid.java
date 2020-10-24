@@ -3,7 +3,7 @@ import org.mockito.Mock;
 
 import java.awt.*;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -17,61 +17,67 @@ public class GameOfLifeTestOneByOneGrid {
     ConfigReader configReader = mock(ConfigReader.class);
 
     @Test
-    public void falseGridMoore() throws Exception {
+    public void gridValueFalseMoore() throws Exception {
         grid.setValue(point, false);
-        when(configReader.getLength()).thenReturn(1);
-        when(configReader.getWidth()).thenReturn(1);
+        when(configReader.getGridLength()).thenReturn(1);
+        when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("Moore");
+
         GameOfLife gameOfLife = new GameOfLife(configReader);
-        assertTrue(gameOfLife.step(grid).getValue(point) == false);
+        assertFalse(gameOfLife.step(grid).getValue(point));
     }
 
     @Test
-    public void trueGridMoore() throws Exception {
+    public void gridValueTrueMoore() throws Exception {
         grid.setValue(point, true);
-        when(configReader.getLength()).thenReturn(1);
-        when(configReader.getWidth()).thenReturn(1);
+        when(configReader.getGridLength()).thenReturn(1);
+        when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("Moore");
+
         GameOfLife gameOfLife = new GameOfLife(configReader);
-        assertTrue(gameOfLife.step(grid).getValue(point) == false);
+        assertFalse(gameOfLife.step(grid).getValue(point));
     }
 
     @Test
-    public void falseGridNeumann() throws Exception {
+    public void gridValueFalseNeumann() throws Exception {
         grid.setValue(point, false);
-        when(configReader.getLength()).thenReturn(1);
-        when(configReader.getWidth()).thenReturn(1);
+        when(configReader.getGridLength()).thenReturn(1);
+        when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("vonNeumann");
+
         GameOfLife gameOfLife = new GameOfLife(configReader);
-        assertTrue(gameOfLife.step(grid).getValue(point) == false);
+        assertFalse(gameOfLife.step(grid).getValue(point));
     }
 
     @Test
-    public void trueGridNeumann() throws Exception {
+    public void gridValueTrueNeumann() throws Exception {
         grid.setValue(point, true);
-        when(configReader.getLength()).thenReturn(1);
-        when(configReader.getWidth()).thenReturn(1);
+        when(configReader.getGridLength()).thenReturn(1);
+        when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("vonNeumann");
+
         GameOfLife gameOfLife = new GameOfLife(configReader);
-        assertTrue(gameOfLife.step(grid).getValue(point) == false);
+        assertFalse(gameOfLife.step(grid).getValue(point));
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void falseGridInvalidModel() throws Exception {
+    public void gridValueFalseInvalidModel() throws Exception {
         grid.setValue(point, false);
-        when(configReader.getLength()).thenReturn(1);
-        when(configReader.getWidth()).thenReturn(1);
+        when(configReader.getGridLength()).thenReturn(1);
+        when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("");
+
         GameOfLife gameOfLife = new GameOfLife(configReader);
         gameOfLife.step(grid);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void trueGridInvalidModel() throws Exception {
+    public void gridValueTrueInvalidModel() throws Exception {
         grid.setValue(point, true);
-        when(configReader.getLength()).thenReturn(1);
-        when(configReader.getWidth()).thenReturn(1);
+        when(configReader.getGridLength()).thenReturn(1);
+        when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("");
+
         GameOfLife gameOfLife = new GameOfLife(configReader);
         gameOfLife.step(grid);
     }

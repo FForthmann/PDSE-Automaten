@@ -12,7 +12,7 @@ public class ConfigReaderTest {
 
     private final static String GAME_TYPE = "1";
     private final static String MODEL = "2";
-    private final static String DATASTRUCTURE = "3";
+    private final static String DATA_STRUCTURE = "3";
     private final static String LOGGING_TYPE = "4";
     private final static String TIME_TO_LIVE = "5";
     private final static String GRID_LENGTH = "6";
@@ -21,7 +21,7 @@ public class ConfigReaderTest {
 
     private final static String ALTERNATIVE_GAME_TYPE = "A";
     private final static String ALTERNATIVE_MODEL = "B";
-    private final static String ALTERNATIVE_DATASTRUCTURE = "C";
+    private final static String ALTERNATIVE_DATA_STRUCTURE = "C";
     private final static String ALTERNATIVE_LOGGING_TYPE = "D";
     private final static String ALTERNATIVE_TIME_TO_LIVE = "10";
     private final static String ALTERNATIVE_GRID_LENGTH = "20";
@@ -34,7 +34,7 @@ public class ConfigReaderTest {
 
         properties.setProperty("game.type", GAME_TYPE);
         properties.setProperty("game.model", MODEL);
-        properties.setProperty("game.datastructure", DATASTRUCTURE);
+        properties.setProperty("game.dataStructure", DATA_STRUCTURE);
         properties.setProperty("game.loggingType", LOGGING_TYPE);
         properties.setProperty("game.timeToLive", TIME_TO_LIVE);
         properties.setProperty("game.grid.length", GRID_LENGTH);
@@ -54,7 +54,7 @@ public class ConfigReaderTest {
 
         assertEquals(GAME_TYPE, configReader.getGameType());
         assertEquals(MODEL, configReader.getModel());
-        assertEquals(DATASTRUCTURE, configReader.getDatastructure());
+        assertEquals(DATA_STRUCTURE, configReader.getDatastructure());
         assertEquals(LOGGING_TYPE, configReader.getLoggingType());
         assertEquals(Integer.parseInt(TIME_TO_LIVE), configReader.getTimeToLive());
         assertEquals(Integer.parseInt(GRID_LENGTH), configReader.getGridLength());
@@ -74,7 +74,7 @@ public class ConfigReaderTest {
 
         configReader.setGameType(ALTERNATIVE_GAME_TYPE);
         configReader.setModel(ALTERNATIVE_MODEL);
-        configReader.setDatastructure(ALTERNATIVE_DATASTRUCTURE);
+        configReader.setDatastructure(ALTERNATIVE_DATA_STRUCTURE);
         configReader.setLoggingType(ALTERNATIVE_LOGGING_TYPE);
         configReader.setTimeToLive(ALTERNATIVE_TIME_TO_LIVE);
         configReader.setGridLength(ALTERNATIVE_GRID_LENGTH);
@@ -83,7 +83,7 @@ public class ConfigReaderTest {
 
         assertEquals(ALTERNATIVE_GAME_TYPE, configReader.getGameType());
         assertEquals(ALTERNATIVE_MODEL, configReader.getModel());
-        assertEquals(ALTERNATIVE_DATASTRUCTURE, configReader.getDatastructure());
+        assertEquals(ALTERNATIVE_DATA_STRUCTURE, configReader.getDatastructure());
         assertEquals(ALTERNATIVE_LOGGING_TYPE, configReader.getLoggingType());
         assertEquals(Integer.parseInt(ALTERNATIVE_TIME_TO_LIVE), configReader.getTimeToLive());
         assertEquals(Integer.parseInt(ALTERNATIVE_GRID_LENGTH), configReader.getGridLength());
