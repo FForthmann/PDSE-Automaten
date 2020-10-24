@@ -19,6 +19,15 @@ public class ConfigReaderTest {
     private final static String GRID_WIDTH = "7";
     private final static String TERMINATION_TYPE = "8";
 
+    private final static String ALTERNATIVE_GAME_TYPE = "A";
+    private final static String ALTERNATIVE_MODEL = "B";
+    private final static String ALTERNATIVE_DATASTRUCTURE = "C";
+    private final static String ALTERNATIVE_LOGGING_TYPE = "D";
+    private final static String ALTERNATIVE_TIME_TO_LIVE = "10";
+    private final static String ALTERNATIVE_GRID_LENGTH = "20";
+    private final static String ALTERNATIVE_GRID_WIDTH = "30";
+    private final static String ALTERNATIVE_TERMINATION_TYPE = "H";
+
     @BeforeClass
     public static void generateTestConfig() throws IOException {
         Properties properties = new Properties();
@@ -57,5 +66,28 @@ public class ConfigReaderTest {
     public void readNotExistingConfigFile() {
         ConfigReader configReader = new ConfigReader("notExistent.properties");
         configReader.getGameType();
+    }
+
+    @Test
+    public void changePropertyValues() {
+        ConfigReader configReader = new ConfigReader("configTest.properties");
+
+        configReader.setGameType(ALTERNATIVE_GAME_TYPE);
+        configReader.setModel(ALTERNATIVE_MODEL);
+        configReader.setDatastructure(ALTERNATIVE_DATASTRUCTURE);
+        configReader.setLoggingType(ALTERNATIVE_LOGGING_TYPE);
+        configReader.setTimeToLive(ALTERNATIVE_TIME_TO_LIVE);
+        configReader.setGridLength(ALTERNATIVE_GRID_LENGTH);
+        configReader.setGridWidth(ALTERNATIVE_GRID_WIDTH);
+        configReader.setTerminationType(ALTERNATIVE_TERMINATION_TYPE);
+
+        assertEquals(ALTERNATIVE_GAME_TYPE, configReader.getGameType());
+        assertEquals(ALTERNATIVE_MODEL, configReader.getModel());
+        assertEquals(ALTERNATIVE_DATASTRUCTURE, configReader.getDatastructure());
+        assertEquals(ALTERNATIVE_LOGGING_TYPE, configReader.getLoggingType());
+        assertEquals(Integer.parseInt(ALTERNATIVE_TIME_TO_LIVE), configReader.getTimeToLive());
+        assertEquals(Integer.parseInt(ALTERNATIVE_GRID_LENGTH), configReader.getGridLength());
+        assertEquals(Integer.parseInt(ALTERNATIVE_GRID_WIDTH), configReader.getGridWidth());
+        assertEquals(ALTERNATIVE_TERMINATION_TYPE, configReader.getTerminationType());
     }
 }
