@@ -55,7 +55,7 @@ public class ConfigReader {
     }
 
     public void setDatastructure(String datastructure) {
-        prop.setProperty("game.datastructure", datastructure);
+        prop.setProperty("game.dataStructure", datastructure);
     }
 
     public void setLoggingType(String loggingType) {

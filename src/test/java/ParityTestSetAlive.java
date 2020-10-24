@@ -1,4 +1,3 @@
-import com.sun.org.apache.xerces.internal.parsers.XPointerParserConfiguration;
 import org.junit.Test;
 import org.mockito.Mock;
 
@@ -39,6 +38,4 @@ public class ParityTestSetAlive {
         assertTrue(stepGrid.getValue(createPoint(2, 1)));
         assertFalse(stepGrid.getValue(createPoint(2, 2)));
     }
-
-
 }
