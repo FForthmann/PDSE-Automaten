@@ -1,11 +1,13 @@
 import java.awt.*;
+import java.io.File;
 
 public class GameOfLife implements IGameType{
 
-    ConfigReader configReader = new ConfigReader("config.properties");
+    final File propertyFile = new File("config.properties");
+    ConfigReader configReader = new ConfigReader(propertyFile);
 
     public GameOfLife() {
-        this.configReader = new ConfigReader("config.properties");
+        this.configReader = new ConfigReader(propertyFile);
     }
 
     public GameOfLife(ConfigReader configReader){

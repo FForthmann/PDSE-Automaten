@@ -1,10 +1,12 @@
 import java.awt.*;
+import java.io.File;
 
 public class Parity implements IGameType {
     ConfigReader configReader;
 
     public Parity() {
-        this.configReader = new ConfigReader("config.properties");
+        final File propertyFile = new File("config.properties");
+        this.configReader = new ConfigReader(propertyFile);
     }
 
     public Parity(ConfigReader configReader) {

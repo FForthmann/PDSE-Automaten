@@ -1,5 +1,4 @@
 import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,7 +28,7 @@ public class ConfigReaderTest {
     private final static String ALTERNATIVE_TIME_TO_LIVE = "10";
     private final static String ALTERNATIVE_GRID_LENGTH = "20";
     private final static String ALTERNATIVE_GRID_WIDTH = "30";
-    private final static String ALTERNATIVE_TERMINATION_TYPE = "H";
+    private final static String ALTERNATIVE_TERMINATION_TYPE = "E";
 
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
