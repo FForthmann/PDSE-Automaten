@@ -5,9 +5,9 @@ public class ConfigReader {
 
     private final Properties prop = new Properties();
 
-    public ConfigReader(String propertiesFileName) {
+    public ConfigReader(File propertyFile) {
         try {
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propertiesFileName);
+            FileInputStream inputStream = new FileInputStream(propertyFile);
             prop.load(inputStream);
         } catch (Exception e) {
             throw new RuntimeException("The properties file could not be found or loaded.");
