@@ -1,4 +1,3 @@
-import sun.awt.ConstrainableGraphics;
 
 public class GameTypeFactory {
     ConfigReader configReader;
