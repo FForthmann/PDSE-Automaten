@@ -1,10 +1,12 @@
 import java.awt.*;
+import java.io.File;
 
 public class Parity implements IGameType {
     ConfigReader configReader;
 
     public Parity() {
-        this.configReader = new ConfigReader("config.properties");
+        final File propertyFile = new File("config.properties");
+        this.configReader = new ConfigReader(propertyFile);
     }
 
     public Parity(ConfigReader configReader) {
@@ -12,13 +14,14 @@ public class Parity implements IGameType {
     }
 
     public IGrid step(IGrid oldGrid) throws Exception {
-        IGrid newGrid = (IGrid) oldGrid.clone();
+        CopyGrid copyGrid = new CopyGrid(oldGrid);
+        IGrid newGrid = oldGrid;
         if ("vonNeumann".equals(configReader.getModel())) {
             Point point;
-            for (int length = 0; length < configReader.getLength(); length++) {
-                for (int width = 0; width < configReader.getWidth(); width++) {
+            for (int length = 0; length < configReader.getGridLength(); length++) {
+                for (int width = 0; width < configReader.getGridWidth(); width++) {
                     point = new Point(length, width);
-                    newGrid.setValue(point, oldGrid.countvonNeumannActiveNeighbors(point) % 2 == 1);
+                    newGrid.setValue(point, copyGrid.getGrid().countvonNeumannActiveNeighbors(point) % 2 == 1);
                 }
             }
         } else {

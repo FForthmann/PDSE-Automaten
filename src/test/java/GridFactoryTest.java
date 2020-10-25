@@ -10,7 +10,7 @@ public class GridFactoryTest {
     @Test
     public void testGetGridAsGridArray() {
         ConfigReader configReader = mock(ConfigReader.class);
-        when(configReader.getDatastructure()).thenReturn("1");
+        when(configReader.getDatastructure()).thenReturn("GridArray");
         GridFactory gridFactory = new GridFactory(4, 4, (configReader.getDatastructure()));
         IGrid currentGrid = new GridArray(4, 4);
         assertTrue(new ReflectionEquals(currentGrid).matches(gridFactory.getGrid()));
@@ -19,7 +19,7 @@ public class GridFactoryTest {
     @Test
     public void testGetGridAsGridPoints() {
         ConfigReader configReader = mock(ConfigReader.class);
-        when(configReader.getDatastructure()).thenReturn("0");
+        when(configReader.getDatastructure()).thenReturn("GridPoint");
         GridFactory gridFactory = new GridFactory(4, 4, configReader.getDatastructure());
         IGrid currentGrid = new GridPoints(4, 4);
         assertTrue(new ReflectionEquals(currentGrid).matches(gridFactory.getGrid()));

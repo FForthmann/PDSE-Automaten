@@ -1,7 +1,8 @@
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public interface IGrid {
+public interface IGrid  extends Serializable {
     void changeValue(Point position);
 
     Object getGrid();
@@ -16,4 +17,9 @@ public interface IGrid {
 
     void setValue(Point position, boolean value);
 
+    public int countMooreActiveNeighbors(Point position);
+
+    public int countvonNeumannActiveNeighbors(Point position);
+
+    public Object clone() throws CloneNotSupportedException;
 }

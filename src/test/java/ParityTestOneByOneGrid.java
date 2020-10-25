@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 
 public class ParityTestOneByOneGrid {
 
-    GridFactory gridFactory = new GridFactory(1, 1, "1");
+    GridFactory gridFactory = new GridFactory(1, 1, "GridArray");
     IGrid grid = gridFactory.getGrid();
     Point point = new Point(0, 0);
 
@@ -19,8 +19,8 @@ public class ParityTestOneByOneGrid {
     @Test(expected = IllegalArgumentException.class)
     public void emptyGridMoore() throws Exception {
         grid.setValue(point, false);
-        when(configReader.getLength()).thenReturn(1);
-        when(configReader.getWidth()).thenReturn(1);
+        when(configReader.getGridLength()).thenReturn(1);
+        when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("Moore");
         Parity parity = new Parity(configReader);
         parity.step(grid);
@@ -29,8 +29,8 @@ public class ParityTestOneByOneGrid {
     @Test(expected = IllegalArgumentException.class)
     public void trueGridMoore() throws Exception {
         grid.setValue(point, true);
-        when(configReader.getLength()).thenReturn(1);
-        when(configReader.getWidth()).thenReturn(1);
+        when(configReader.getGridLength()).thenReturn(1);
+        when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("Moore");
         Parity parity = new Parity(configReader);
         parity.step(grid);
@@ -39,8 +39,8 @@ public class ParityTestOneByOneGrid {
     @Test
     public void emptyGridNeumann() throws Exception {
         grid.setValue(point, false);
-        when(configReader.getLength()).thenReturn(1);
-        when(configReader.getWidth()).thenReturn(1);
+        when(configReader.getGridLength()).thenReturn(1);
+        when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("vonNeumann");
         Parity parity = new Parity(configReader);
         assertTrue(parity.step(grid).getValue(point) == false);
@@ -49,8 +49,8 @@ public class ParityTestOneByOneGrid {
     @Test
     public void trueGridNeumann() throws Exception {
         grid.setValue(point, true);
-        when(configReader.getLength()).thenReturn(1);
-        when(configReader.getWidth()).thenReturn(1);
+        when(configReader.getGridLength()).thenReturn(1);
+        when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("vonNeumann");
         Parity parity = new Parity(configReader);
         assertTrue(parity.step(grid).getValue(point) == false);
