@@ -28,11 +28,6 @@ public class GridPoints extends Grid implements IGrid {
     }
 
     @Override
-    public boolean getValue(Point position) {
-        return getGrid().get(position);
-    }
-
-    @Override
     public void setValue(Point position, boolean value) {
         getGrid().replace(position, value);
     }
@@ -40,6 +35,11 @@ public class GridPoints extends Grid implements IGrid {
     @Override
     boolean checkFieldExists(int x, int y) {
         return x >= 0 && x <= depth - 1 && y >= 0 && y <= length - 1;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     private void createGrid() {
@@ -68,6 +68,11 @@ public class GridPoints extends Grid implements IGrid {
             stringBuilder.append("\n");
         }
         return stringBuilder.toString();
+    }
+
+    @Override
+    public boolean getValue(Point position) {
+        return getGrid().get(position);
     }
 }
 

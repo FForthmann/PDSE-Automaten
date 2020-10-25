@@ -13,27 +13,6 @@ public class GridArray extends Grid implements IGrid {
     }
 
     @Override
-    boolean checkFieldExists(int x, int y) {
-        return x >= 0 && x <= depth - 1 && y >= 0 && y <= length - 1;
-    }
-
-    private void createGrid() {
-        grid = new int[depth][length];
-        fillGrid();
-    }
-
-    private void fillGrid() {
-        for (int[] length : grid) {
-            Arrays.fill(length, 0);
-        }
-    }
-
-    @Override
-    public int[][] getGrid() {
-        return grid;
-    }
-
-    @Override
     public void changeValue(Point position) {
         int depth = position.x;
         int length = position.y;
@@ -46,10 +25,36 @@ public class GridArray extends Grid implements IGrid {
     }
 
     @Override
+    boolean checkFieldExists(int x, int y) {
+        return x >= 0 && x <= depth - 1 && y >= 0 && y <= length - 1;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    private void createGrid() {
+        grid = new int[depth][length];
+        fillGrid();
+    }
+
+    @Override
     public boolean getValue(Point position) {
         int depth = position.x;
         int length = position.y;
         return getGrid()[depth][length] != 0;
+    }
+
+    private void fillGrid() {
+        for (int[] length : grid) {
+            Arrays.fill(length, 0);
+        }
+    }
+
+    @Override
+    public int[][] getGrid() {
+        return grid;
     }
 
     //TODO Duplicate Code entfernen
@@ -75,8 +80,6 @@ public class GridArray extends Grid implements IGrid {
     public void setValue(Point position, boolean value) {
         int depth = position.x;
         int length = position.y;
-        getGrid()[depth][length] = value ? 1 : 0;
+        grid[depth][length] = value ? 1 : 0;
     }
-
-
 }
