@@ -4,15 +4,9 @@ import de.nordakademie.pdse.config.ConfigReader;
 import de.nordakademie.pdse.grid.IGrid;
 
 import java.awt.*;
-import java.io.File;
 
 public class GameOfLife implements IGameType {
     ConfigReader configReader;
-
-    public GameOfLife() {
-        final File propertyFile = new File("config.properties");
-        this.configReader = new ConfigReader(propertyFile);
-    }
 
     public GameOfLife(ConfigReader configReader) {
         this.configReader = configReader;
