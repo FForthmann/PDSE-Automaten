@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Logger {
-    private final int loggingType;
+    private final String loggingType;
     private File file;
 
 
-    public Logger(int loggingType) {
+    public Logger(String loggingType) {
         this.loggingType = loggingType;
         createFile();
     }
@@ -20,18 +20,22 @@ public class Logger {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("###" + iteration + "\n");
         stringBuilder.append(grid);
-        if (loggingType == 0) {
+        if (loggingType.equals("consoleAndFile")) {
             writeLogToFile(stringBuilder.toString());
             writeLogToConsole(stringBuilder.toString());
-        } else if (loggingType == 1) {
+        } else if (loggingType.equals("file")) {
             writeLogToFile(stringBuilder.toString());
+        } else if (loggingType.equals("console")){
+            writeLogToConsole(stringBuilder.toString());
+        } else if(loggingType.equals("disable")) {
+
         } else {
-            writeLogToConsole(stringBuilder.toString());
+            throw new IllegalArgumentException("Invalide LoggingType");
         }
     }
 
     private void createFile() {
-        if (loggingType != 3) {
+        if (loggingType.equals("")) {
             file = new File("gridLog" + getCurrentTime());
         }
     }
