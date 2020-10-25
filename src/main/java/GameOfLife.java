@@ -1,21 +1,20 @@
 import java.awt.*;
 import java.io.File;
 
-public class GameOfLife implements IGameType{
-
-    final File propertyFile = new File("config.properties");
-    ConfigReader configReader = new ConfigReader(propertyFile);
+public class GameOfLife implements IGameType {
+    ConfigReader configReader;
 
     public GameOfLife() {
+        final File propertyFile = new File("config.properties");
         this.configReader = new ConfigReader(propertyFile);
     }
 
-    public GameOfLife(ConfigReader configReader){
+    public GameOfLife(ConfigReader configReader) {
         this.configReader = configReader;
     }
 
     @Override
-    public IGrid step(IGrid oldGrid) throws Exception {
+    public IGrid step(IGrid oldGrid) {
         IGrid newGrid = oldGrid; //TODO grid kopieren anstatt zu pointen
         Point point;
         if ("Moore".equals(configReader.getModel())) {
@@ -41,11 +40,7 @@ public class GameOfLife implements IGameType{
     private static boolean getPointStatus(Boolean point, int aliveNeighbors) {
 
         if (point.equals(true)) {
-            if (aliveNeighbors == 2 || aliveNeighbors == 3) {
-                point = true;
-            } else {
-                point = false;
-            }
+            point = aliveNeighbors == 2 || aliveNeighbors == 3;
         } else {
             if (aliveNeighbors == 3) {
                 point = true;
