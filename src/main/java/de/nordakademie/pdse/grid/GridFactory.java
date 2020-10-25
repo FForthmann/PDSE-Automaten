@@ -14,7 +14,7 @@ public class GridFactory {
     public IGrid getGrid() {
         if ("GridArray".equals(dataStructure)) {
             return new GridArray(length, depth);
-        } else if ("GridPoint".equals(dataStructure)) {
+        } else if ("GridPoints".equals(dataStructure)) {
             return new GridPoints(length, depth);
         } else {
             throw new IllegalArgumentException("Invalid DataStrucutre");

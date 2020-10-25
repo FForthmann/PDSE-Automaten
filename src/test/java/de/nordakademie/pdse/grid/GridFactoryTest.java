@@ -22,7 +22,7 @@ public class GridFactoryTest {
     @Test
     public void testGetGridAsGridPoints() {
         ConfigReader configReader = mock(ConfigReader.class);
-        when(configReader.getDatastructure()).thenReturn("GridPoint");
+        when(configReader.getDatastructure()).thenReturn("GridPoints");
         GridFactory gridFactory = new GridFactory(4, 4, configReader.getDatastructure());
         IGrid currentGrid = new GridPoints(4, 4);
         assertTrue(new ReflectionEquals(currentGrid).matches(gridFactory.getGrid()));
