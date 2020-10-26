@@ -7,7 +7,7 @@ import de.nordakademie.pdse.grid.IGrid;
 import java.awt.*;
 import java.io.File;
 
-public class GameOfLife_Experiment_2_GridPoint {
+public class GameOfLife_Experiment_2_GridPoints {
 
     private static Point createPoint(int x, int y) {
         return new Point(x, y);
