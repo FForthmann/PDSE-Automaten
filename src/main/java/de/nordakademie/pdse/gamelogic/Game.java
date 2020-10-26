@@ -3,6 +3,7 @@ package de.nordakademie.pdse.gamelogic;
 import de.nordakademie.pdse.config.ConfigReader;
 import de.nordakademie.pdse.grid.GridFactory;
 import de.nordakademie.pdse.grid.IGrid;
+import de.nordakademie.pdse.logging.Logger;
 
 public class Game {
 
@@ -10,33 +11,38 @@ public class Game {
     IGameType gameType;
     ConfigReader configReader;
     Boolean continueGame;
+    Logger logger;
     int timeToLive;
+    int iteration;
+
 
     public Game(ConfigReader configReader) {
         this.configReader = configReader;
         this.timeToLive = configReader.getTimeToLive();
         this.grid = new GridFactory(configReader.getGridLength(), configReader.getGridWidth(), configReader.getDatastructure()).getGrid();
         this.gameType = new GameTypeFactory(configReader).getGameType();
+        this.logger = new Logger(configReader.getLoggingType());
         this.continueGame = true;
+        this.iteration = 0;
     }
 
-    public Boolean getContinueGame() {
+    private Boolean getContinueGame() {
         return continueGame;
     }
 
-    public void setContinueGame(Boolean continueGame) {
+    private void setContinueGame(Boolean continueGame) {
         this.continueGame = continueGame;
     }
 
-    public void reduceTimeToLive() {
+    private void reduceTimeToLive() {
         timeToLive--;
     }
 
-    public int getTimeToLive() {
+    private int getTimeToLive() {
         return timeToLive;
     }
 
-    public boolean isTimeToLiveZero() {
+    private boolean isTimeToLiveZero() {
         if (getTimeToLive() > 0) {
             return false;
         } else {
@@ -44,12 +50,12 @@ public class Game {
         }
     }
 
-    public boolean processTimeToLive() {
+    private boolean processTimeToLive() {
         reduceTimeToLive();
         return isTimeToLiveZero();
     }
 
-    public boolean gridChanged(IGrid grid) {
+    private boolean gridChanged(IGrid grid) {
         if (this.grid.equals(grid)) {
             return false;
         } else {
@@ -57,7 +63,7 @@ public class Game {
         }
     }
 
-    public void checkForTermination(IGrid newGrid) {
+    private void checkForTermination(IGrid newGrid) {
         switch (configReader.getTerminationType()) {
             case "ttl":
                 this.setContinueGame(!processTimeToLive());
@@ -79,8 +85,25 @@ public class Game {
         this.grid = grid;
     }
 
+    public int getIteration() {
+        return iteration;
+    }
+
+    public void setIteration(int iteration) {
+        this.iteration = iteration;
+    }
+
+    private int getCurrentIterationAndIterate() {
+       int i = this.getIteration();
+       i++;
+       this.setIteration(i);
+        i--;
+       return i;
+    }
+
     public void run() throws Exception {
         while (this.getContinueGame()) {
+            logger.addGridToLog(getGird().toString(), getCurrentIterationAndIterate());
             IGrid newGrid = gameType.step(getGird());
             checkForTermination(newGrid);
             if (getContinueGame()) {
