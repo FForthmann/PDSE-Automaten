@@ -20,7 +20,7 @@ public class Parity_Experiment_2_GridPoint {
         configReader.setGameType("Parity");
         configReader.setTerminationType("ttl");
         configReader.setTimeToLive("100");
-        configReader.setDatastructure("GridPoint");
+        configReader.setDatastructure("GridPoints");
         Game game = new Game(configReader);
         IGrid grid = game.getGird();
         for (int length = 0; length < configReader.getGridLength(); length++) {
