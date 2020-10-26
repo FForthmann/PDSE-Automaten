@@ -4,6 +4,11 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Georg Mezlaw
+ * @since 26.10.2020
+ */
 public interface IGrid extends Serializable {
     void changeValue(Point position);
 

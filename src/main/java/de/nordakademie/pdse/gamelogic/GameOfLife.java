@@ -17,15 +17,15 @@ public class GameOfLife implements IGameType {
         IGrid newGrid = oldGrid;
         Point point;
         if ("Moore".equals(configReader.getModel())) {
-            for (int length = 0; length < configReader.getGridLength(); length++) {
-                for (int width = 0; width < configReader.getGridWidth(); width++) {
+            for (int width = 0; width < configReader.getGridLength() ; width++) {
+                for (int length = 0; length < configReader.getGridWidth(); length++) {
                     point = new Point(length, width);
                     newGrid.setValue(point, getPointStatus(oldGrid.getValue(point), oldGrid.countMooreActiveNeighbors(point)));
                 }
             }
         } else if ("vonNeumann".equals(configReader.getModel())) {
-            for (int length = 0; length < configReader.getGridLength(); length++) {
-                for (int width = 0; width < configReader.getGridWidth(); width++) {
+            for (int width = 0; width < configReader.getGridLength(); width++) {
+                for (int length = 0; length < configReader.getGridWidth(); length++) {
                     point = new Point(length, width);
                     newGrid.setValue(point, getPointStatus(oldGrid.getValue(point), oldGrid.countVonNeumannActiveNeighbors(point)));
                 }

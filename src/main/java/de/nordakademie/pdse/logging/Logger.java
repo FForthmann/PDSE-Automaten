@@ -3,9 +3,17 @@ package de.nordakademie.pdse.logging;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ *
+ * @author Georg Mezlaw
+ * @since 26.10.2020
+ */
 public class Logger {
     private final String loggingType;
     private File file;
@@ -13,40 +21,52 @@ public class Logger {
 
     public Logger(String loggingType) {
         this.loggingType = loggingType;
-        createFile();
+        if (!this.loggingType.equals("console")) {
+            createFile();
+        }
     }
 
     public void addGridToLog(String grid, int iteration) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("###" + iteration + "\n");
         stringBuilder.append(grid);
-        if (loggingType.equals("consoleAndFile")) {
-            writeLogToFile(stringBuilder.toString());
-            writeLogToConsole(stringBuilder.toString());
-        } else if (loggingType.equals("file")) {
-            writeLogToFile(stringBuilder.toString());
-        } else if (loggingType.equals("console")){
-            writeLogToConsole(stringBuilder.toString());
-        } else if(loggingType.equals("disable")) {
+        switch (loggingType) {
+            case "consoleAndFile":
+                writeLogToFile(stringBuilder.toString());
+                writeLogToConsole(stringBuilder.toString());
+                break;
+            case "file":
+                writeLogToFile(stringBuilder.toString());
+                break;
+            case "console":
+                writeLogToConsole(stringBuilder.toString());
+                break;
+            case "disable":
 
-        } else {
-            throw new IllegalArgumentException("Invalide LoggingType");
+                break;
+            default:
+                throw new IllegalArgumentException("Invalide LoggingType");
         }
     }
 
     private void createFile() {
-        if (loggingType.equals("")) {
-            file = new File("gridLog" + getCurrentTime());
+        Path path = Paths.get("GridLog" + getCurrentTime() + ".txt");
+        try {
+            Files.createFile(path);
+            file = new File(String.valueOf(path));
+
+        } catch (IOException ignored) {
+
         }
     }
 
     private String getCurrentTime() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH-mm-ss");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH-mm-ss");
         LocalDateTime localDateTime = LocalDateTime.now();
         return dateTimeFormatter.format(localDateTime);
     }
 
-    private File getFile() {
+    public File getFile() {
         return file;
     }
 

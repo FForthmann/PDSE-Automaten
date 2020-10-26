@@ -3,6 +3,11 @@ package de.nordakademie.pdse.grid;
 import java.awt.*;
 import java.util.Arrays;
 
+/**
+ *
+ * @author Christian Apsel
+ * @since 26.10.2020
+ */
 public class GridArray extends Grid implements IGrid {
     private final int length;
     private final int depth;

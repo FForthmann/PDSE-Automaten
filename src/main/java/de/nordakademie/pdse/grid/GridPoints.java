@@ -2,7 +2,11 @@ package de.nordakademie.pdse.grid;
 
 import java.awt.*;
 import java.util.HashMap;
-
+/**
+ *
+ * @author Christian Apsel
+ * @since 26.10.2020
+ */
 public class GridPoints extends Grid implements IGrid {
     private final int length;
     private final int depth;
@@ -47,7 +51,7 @@ public class GridPoints extends Grid implements IGrid {
         grid = new HashMap<>();
         for (int i = 0; i < depth; i++) {
             for (int j = 0; j < length; j++) {
-                grid.put(new Point(j, i), false);
+                grid.put(new Point(i, j), false);
             }
         }
     }
@@ -57,7 +61,6 @@ public class GridPoints extends Grid implements IGrid {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < depth; i++) {
-
             for (int j = 0; j < length; j++) {
 
                 if (getValue(new Point(i, j))) {

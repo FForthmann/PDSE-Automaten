@@ -5,6 +5,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ *
+ * @author Christian Apsel
+ * @since 26.10.2020
+ */
 public class CopyGrid {
     private final IGrid grid;
 

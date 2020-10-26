@@ -3,6 +3,11 @@ package de.nordakademie.pdse.grid;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Georg Mezlaw
+ * @since 26.10.2020
+ */
 public abstract class Grid {
 
     abstract boolean checkFieldExists(int x, int y);

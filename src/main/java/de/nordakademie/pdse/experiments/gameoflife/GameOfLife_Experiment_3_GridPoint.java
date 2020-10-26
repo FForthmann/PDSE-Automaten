@@ -15,7 +15,7 @@ public class GameOfLife_Experiment_3_GridPoint {
         configReader.setGameType("GameOfLife");
         configReader.setTerminationType("ttl");
         configReader.setTimeToLive("100");
-        configReader.setDatastructure("GridPoint");
+        configReader.setDatastructure("GridPoints");
         Game game = new Game(configReader);
         game.run();
     }

@@ -1,5 +1,9 @@
 package de.nordakademie.pdse.grid;
-
+/**
+ *
+ * @author Christian Apsel
+ * @since 26.10.2020
+ */
 public class GridFactory {
     private final int depth;
     private final int length;
