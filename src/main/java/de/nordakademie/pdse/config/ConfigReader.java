@@ -11,6 +11,9 @@ public class ConfigReader {
         try {
             FileInputStream inputStream = new FileInputStream(propertyFile);
             prop.load(inputStream);
+
+            PropertyValidator propertyValidator = new PropertyValidator();
+            propertyValidator.validateConfig(prop);
         } catch (Exception e) {
             throw new RuntimeException("The properties file could not be found or loaded.");
         }
