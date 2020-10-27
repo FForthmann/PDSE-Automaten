@@ -24,6 +24,7 @@ public class GameTest {
     @Test
     public void getGird() {
         when(configReader.getTerminationType()).thenReturn("noChange");
+        when(configReader.getLoggingType()).thenReturn("console");
         when(configReader.getDatastructure()).thenReturn("GridArray");
         when(configReader.getGameType()).thenReturn("Parity");
         when(configReader.getTimeToLive()).thenReturn(2);
@@ -37,6 +38,7 @@ public class GameTest {
     @Test
     public void setGrid() {
         when(configReader.getTerminationType()).thenReturn("noChange");
+        when(configReader.getLoggingType()).thenReturn("console");
         when(configReader.getDatastructure()).thenReturn("GridArray");
         when(configReader.getGameType()).thenReturn("Parity");
         when(configReader.getTimeToLive()).thenReturn(2);
