@@ -56,7 +56,11 @@ public class ConfigReaderTest {
 
     @Test
     public void setPropertyValues() throws IOException {
+        Properties properties = initializeValidPropertiesFile();
+
         final File tempFile = tempFolder.newFile("tempFile.properties");
+        // Writing String into the temporary file and formatting it
+        FileUtils.writeStringToFile(tempFile, properties.toString().replaceAll(",", "\n").replaceFirst("\\{", "").replaceAll("}", "").replaceAll(" ", ""));
         ConfigReader configReader = new ConfigReader(tempFile);
 
         configReader.setGameType(ALTERNATIVE_GAME_TYPE);
