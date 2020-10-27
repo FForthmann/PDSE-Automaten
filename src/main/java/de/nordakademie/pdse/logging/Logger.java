@@ -21,7 +21,7 @@ public class Logger {
 
     public Logger(String loggingType) {
         this.loggingType = loggingType;
-        if (!this.loggingType.equals("console")) {
+        if (!"console".equals(this.loggingType)) {
             createFile();
         }
     }
