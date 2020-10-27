@@ -47,7 +47,7 @@ public class ConfigValidatorTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void validateInvalidPropertyConfigWithFalseStrings(){
+    public void validateInvalidPropertyConfigWithFalseStrings() {
         Properties prop = new Properties();
         prop.setProperty(GAME_TYPE, "GameOfLifeA");
         prop.setProperty(GAME_MODEL, "vonNeumannB");
@@ -62,7 +62,7 @@ public class ConfigValidatorTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void validateInvalidPropertyConfigWithFalseIntegers(){
+    public void validateInvalidPropertyConfigWithFalseIntegers() {
         Properties prop = new Properties();
         prop.setProperty(GAME_TYPE, "GameOfLife");
         prop.setProperty(GAME_MODEL, "vonNeumann");
@@ -87,6 +87,19 @@ public class ConfigValidatorTest {
         prop.setProperty(WIDTH, "10");
         prop.setProperty(TERMINATION_TYPE, "ttl");
         prop.setProperty(TIME_TO_LIVE, "-54");
+
+        PropertyValidator propertyValidator = new PropertyValidator();
+        propertyValidator.validateConfig(prop);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void validateInvalidPropertyConfigWithMissingFields() {
+        Properties prop = new Properties();
+        prop.setProperty(GAME_TYPE, "GameOfLife");
+        prop.setProperty(DATA_STRUCTURE, "GridArray");
+        prop.setProperty(LOGGING_TYPE, "disable");
+        prop.setProperty(WIDTH, "10");
+        prop.setProperty(TERMINATION_TYPE, "noChange");
 
         PropertyValidator propertyValidator = new PropertyValidator();
         propertyValidator.validateConfig(prop);
