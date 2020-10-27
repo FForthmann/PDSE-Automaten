@@ -14,23 +14,23 @@ import static org.junit.Assert.assertEquals;
 
 public class ConfigReaderTest {
 
-    private final static String GAME_TYPE = "1";
-    private final static String MODEL = "2";
-    private final static String DATA_STRUCTURE = "3";
-    private final static String LOGGING_TYPE = "4";
-    private final static String TIME_TO_LIVE = "5";
-    private final static String GRID_LENGTH = "6";
-    private final static String GRID_WIDTH = "7";
-    private final static String TERMINATION_TYPE = "8";
+    private final static String GAME_TYPE = "Parity";
+    private final static String MODEL = "Moore";
+    private final static String DATA_STRUCTURE = "GridPoints";
+    private final static String LOGGING_TYPE = "console";
+    private final static String TIME_TO_LIVE = "500";
+    private final static String GRID_LENGTH = "40";
+    private final static String GRID_WIDTH = "67";
+    private final static String TERMINATION_TYPE = "ttl";
 
-    private final static String ALTERNATIVE_GAME_TYPE = "A";
-    private final static String ALTERNATIVE_MODEL = "B";
-    private final static String ALTERNATIVE_DATA_STRUCTURE = "C";
-    private final static String ALTERNATIVE_LOGGING_TYPE = "D";
-    private final static String ALTERNATIVE_TIME_TO_LIVE = "10";
-    private final static String ALTERNATIVE_GRID_LENGTH = "20";
-    private final static String ALTERNATIVE_GRID_WIDTH = "30";
-    private final static String ALTERNATIVE_TERMINATION_TYPE = "E";
+    private final static String ALTERNATIVE_GAME_TYPE = "GameOfLife";
+    private final static String ALTERNATIVE_MODEL = "vonNeumann";
+    private final static String ALTERNATIVE_DATA_STRUCTURE = "GridArray";
+    private final static String ALTERNATIVE_LOGGING_TYPE = "file";
+    private final static String ALTERNATIVE_TIME_TO_LIVE = "30";
+    private final static String ALTERNATIVE_GRID_LENGTH = "3";
+    private final static String ALTERNATIVE_GRID_WIDTH = "98";
+    private final static String ALTERNATIVE_TERMINATION_TYPE = "noChange";
 
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
@@ -56,7 +56,11 @@ public class ConfigReaderTest {
 
     @Test
     public void setPropertyValues() throws IOException {
+        Properties properties = initializeValidPropertiesFile();
+
         final File tempFile = tempFolder.newFile("tempFile.properties");
+        // Writing String into the temporary file and formatting it
+        FileUtils.writeStringToFile(tempFile, properties.toString().replaceAll(",", "\n").replaceFirst("\\{", "").replaceAll("}", "").replaceAll(" ", ""));
         ConfigReader configReader = new ConfigReader(tempFile);
 
         configReader.setGameType(ALTERNATIVE_GAME_TYPE);
@@ -68,7 +72,6 @@ public class ConfigReaderTest {
         configReader.setGridWidth(ALTERNATIVE_GRID_WIDTH);
         configReader.setTerminationType(ALTERNATIVE_TERMINATION_TYPE);
 
-        // TODO Eventually dont use the getter from the method itself
         assertEquals(ALTERNATIVE_GAME_TYPE, configReader.getGameType());
         assertEquals(ALTERNATIVE_MODEL, configReader.getModel());
         assertEquals(ALTERNATIVE_DATA_STRUCTURE, configReader.getDatastructure());
@@ -97,7 +100,6 @@ public class ConfigReaderTest {
         configReader.setGridWidth(ALTERNATIVE_GRID_WIDTH);
         configReader.setTerminationType(ALTERNATIVE_TERMINATION_TYPE);
 
-        // TODO Eventually dont use the getter from the method itself
         assertEquals(ALTERNATIVE_GAME_TYPE, configReader.getGameType());
         assertEquals(ALTERNATIVE_MODEL, configReader.getModel());
         assertEquals(ALTERNATIVE_DATA_STRUCTURE, configReader.getDatastructure());
