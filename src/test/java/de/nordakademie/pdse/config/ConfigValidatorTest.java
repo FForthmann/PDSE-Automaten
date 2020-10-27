@@ -24,6 +24,7 @@ public class ConfigValidatorTest {
         prop.setProperty(LOGGING_TYPE, "disable");
         prop.setProperty(LENGTH, "10");
         prop.setProperty(WIDTH, "10");
+        prop.setProperty(TIME_TO_LIVE, "589");
         prop.setProperty(TERMINATION_TYPE, "ttlOrNoChange");
 
         PropertyValidator propertyValidator = new PropertyValidator();
@@ -55,6 +56,7 @@ public class ConfigValidatorTest {
         prop.setProperty(LOGGING_TYPE, "disableD");
         prop.setProperty(LENGTH, "10");
         prop.setProperty(WIDTH, "10");
+        prop.setProperty(TIME_TO_LIVE, "92");
         prop.setProperty(TERMINATION_TYPE, "ttlOrNoChangeE");
 
         PropertyValidator propertyValidator = new PropertyValidator();
@@ -68,8 +70,9 @@ public class ConfigValidatorTest {
         prop.setProperty(GAME_MODEL, "vonNeumann");
         prop.setProperty(DATA_STRUCTURE, "GridArray");
         prop.setProperty(LOGGING_TYPE, "disable");
-        prop.setProperty(LENGTH, "-100");
+        prop.setProperty(LENGTH, "0");
         prop.setProperty(WIDTH, "-10");
+        prop.setProperty(TIME_TO_LIVE, "-987");
         prop.setProperty(TERMINATION_TYPE, "ttlOrNoChange");
 
         PropertyValidator propertyValidator = new PropertyValidator();

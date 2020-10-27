@@ -16,12 +16,12 @@ public class PropertyValidator {
     public void validateConfig(Properties prop) {
         boolean validDataInFile = true;
         try {
-            if (("noChange".equals(prop.getProperty(TERMINATION_TYPE_KEY))) || ("ttlOrNoChange".equals(prop.getProperty(TERMINATION_TYPE_KEY))) || ("ttl".equals(prop.getProperty(TERMINATION_TYPE_KEY)))) {
-                if ("ttl".equals(prop.getProperty(TERMINATION_TYPE_KEY))) { // Hinzufügen ttlOrNoChange
-                    if (Integer.parseInt(prop.getProperty(TIME_TO_LIVE_KEY)) < 0) {
-                        validDataInFile = false;
-                    }
+            if ("ttlOrNoChange".equals(prop.getProperty(TERMINATION_TYPE_KEY)) || "ttl".equals(prop.getProperty(TERMINATION_TYPE_KEY))) {
+                if (Integer.parseInt(prop.getProperty(TIME_TO_LIVE_KEY)) < 0) {
+                    validDataInFile = false;
                 }
+            } else if (!"noChange".equals(prop.getProperty(TERMINATION_TYPE_KEY))) {
+                validDataInFile = false;
             } else {
                 validDataInFile = false;
             }
