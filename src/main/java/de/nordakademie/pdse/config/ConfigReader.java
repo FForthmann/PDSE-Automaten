@@ -1,8 +1,12 @@
 package de.nordakademie.pdse.config;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Properties;
 
+/**
+ * Reads the configuration file and is responsible for the adjustment of properties. With the different GET methods the properties of single values can be returned.
+ */
 public class ConfigReader {
 
     private final Properties prop = new Properties();

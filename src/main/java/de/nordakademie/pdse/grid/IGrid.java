@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
+ * contains important information for the playing field. Can determine if a cell is alive or dead, return the playing field, return neighbors and count the neighbors
  *
  * @author Georg Mezlaw
  * @since 26.10.2020

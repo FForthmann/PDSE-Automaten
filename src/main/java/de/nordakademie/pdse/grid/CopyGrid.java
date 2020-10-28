@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
+ * This is used to create a copy of a playing field. This is necessary, because otherwise only pointers would exist
  *
  * @author Christian Apsel
  * @since 26.10.2020

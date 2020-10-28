@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
+ * Returns the output of the simulation to a log file or the console
  *
  * @author Georg Mezlaw
  * @since 26.10.2020

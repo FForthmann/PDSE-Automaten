@@ -2,6 +2,9 @@ package de.nordakademie.pdse.config;
 
 import java.util.Properties;
 
+/**
+ *
+ */
 public class PropertyValidator {
 
     private static final String GAME_TYPE_KEY = "game.type";

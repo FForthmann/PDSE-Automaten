@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
+ * abstract superclass, contains the logic for the playing field, can count neighbors and find out if a field exists
  *
  * @author Georg Mezlaw
  * @since 26.10.2020

@@ -2,6 +2,9 @@ package de.nordakademie.pdse.gamelogic;
 
 import de.nordakademie.pdse.config.ConfigReader;
 
+/**
+ * A factory that contains a getGameType method that is used to create instances of Parity and GameOfLife.
+ */
 public class GameTypeFactory {
     ConfigReader configReader;
 

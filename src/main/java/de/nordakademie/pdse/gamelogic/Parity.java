@@ -6,6 +6,9 @@ import de.nordakademie.pdse.grid.IGrid;
 
 import java.awt.*;
 
+/**
+ * This class uses the step method to check whether a point is "dead" or "alive".
+ */
 public class Parity implements IGameType {
     ConfigReader configReader;
 

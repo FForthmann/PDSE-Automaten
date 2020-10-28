@@ -3,6 +3,7 @@ package de.nordakademie.pdse.grid;
 import java.awt.*;
 import java.util.HashMap;
 /**
+ * Contains the grid class as superclass and the IGrid as interface. Can create a playing field.
  *
  * @author Christian Apsel
  * @since 26.10.2020

@@ -5,6 +5,9 @@ import de.nordakademie.pdse.grid.GridFactory;
 import de.nordakademie.pdse.grid.IGrid;
 import de.nordakademie.pdse.logging.Logger;
 
+/**
+ * It summarizes the game logic and creates the game.
+ */
 public class Game {
 
     IGrid grid;
@@ -94,19 +97,19 @@ public class Game {
     }
 
     private int getCurrentIterationAndIterate() {
-       int i = this.getIteration();
-       i++;
-       this.setIteration(i);
+        int i = this.getIteration();
+        i++;
+        this.setIteration(i);
         i--;
-       return i;
+        return i;
     }
 
     public void run() throws Exception {
-            logger.addGridToLog(getGird().toString(), getCurrentIterationAndIterate());
+        logger.addGridToLog(getGird().toString(), getCurrentIterationAndIterate());
         while (this.getContinueGame()) {
             IGrid newGrid = gameType.step(getGird());
             checkForTermination(newGrid);
-                this.setGrid(newGrid);
+            this.setGrid(newGrid);
             logger.addGridToLog(getGird().toString(), getCurrentIterationAndIterate());
         }
     }

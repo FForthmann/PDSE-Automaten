@@ -1,5 +1,6 @@
 package de.nordakademie.pdse.grid;
 /**
+ * This factory is used to create multiple object instances, inherits from the interface IGrid and uses the method getGrid to get the current grid.
  *
  * @author Christian Apsel
  * @since 26.10.2020

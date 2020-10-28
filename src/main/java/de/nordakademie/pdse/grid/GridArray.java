@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.Arrays;
 
 /**
+ * Contains the grid class as superclass and the IGrid as interface. Can create a playing field.
  *
  * @author Christian Apsel
  * @since 26.10.2020

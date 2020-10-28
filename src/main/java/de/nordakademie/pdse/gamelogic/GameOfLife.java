@@ -5,6 +5,9 @@ import de.nordakademie.pdse.grid.IGrid;
 
 import java.awt.*;
 
+/**
+ * Contains the game logic for the game mode of the Game of Life, has like Parity the step method and additionally because of further game rules an extended logic in the method getPointStatus
+ */
 public class GameOfLife implements IGameType {
     ConfigReader configReader;
 
