@@ -38,10 +38,6 @@ public class GridArray extends Grid implements IGrid {
         grid[width][length] = value ? 1 : 0;
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 
     @Override
     boolean checkFieldExists(int x, int y) {

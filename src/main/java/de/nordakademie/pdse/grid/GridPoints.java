@@ -42,11 +42,6 @@ public class GridPoints extends Grid implements IGrid {
         return x >= 0 && x <= width - 1 && y >= 0 && y <= length - 1;
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
     private void createGrid() {
         grid = new HashMap<>();
         for (int i = 0; i < width; i++) {

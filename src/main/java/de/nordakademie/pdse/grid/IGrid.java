@@ -28,5 +28,4 @@ public interface IGrid extends Serializable {
 
     public int countVonNeumannActiveNeighbors(Point position);
 
-    public Object clone() throws CloneNotSupportedException;
 }
