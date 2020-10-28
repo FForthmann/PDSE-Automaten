@@ -1,13 +1,15 @@
 import de.nordakademie.pdse.config.ConfigReader;
 import de.nordakademie.pdse.gamelogic.Game;
-import de.nordakademie.pdse.grid.IGrid;
 
 import java.awt.*;
 import java.io.File;
+import java.util.Scanner;
 
 public class Main {
+    private ConfigReader configReader;
     public static void main(String[] args) throws Exception {
-        ConfigReader configReader;
+
+        Main main = new Main();
         File file;
 
         if (args.length != 0) {
@@ -16,9 +18,33 @@ public class Main {
             file = new File("src/main/resources/config.properties");
         }
 
-        configReader = new ConfigReader(file);
-        Game game = new Game(configReader);
+        main.configReader = new ConfigReader(file);
+        Game game = new Game(main.configReader);
+        main.setPoints(game);
         game.run();
+
+    }
+
+    void setPoints(Game game){
+        String run = "";
+        Scanner scanner = new Scanner(System.in);
+        while (!run.equalsIgnoreCase("run")){
+            System.out.println("Bitte geben Sie Aktive Punkte ein: X,Y / Bitte geben Sie run zum starten des Programms ein");
+            String temp = scanner.next();
+            if (temp.contains(",")){
+                String[] s = temp.split(",");
+                if (s.length == 2 && Integer.parseInt(s[0]) < configReader.getGridLength() && Integer.parseInt(s[1]) < configReader.getGridWidth()){
+                    {
+                        game.getGird().setValue(new Point (Integer.parseInt(s[0]), Integer.parseInt(s[1])), true);
+                    }
+                }
+            }else if (temp.equalsIgnoreCase("run")){
+                run = "run";
+            }else {
+                System.out.println("falsche Eingabe");
+            }
+
+        }
 
     }
 }
