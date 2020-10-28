@@ -76,8 +76,9 @@ public class Logger {
 
     private void writeLogToFile(String input) {
         try {
-            FileWriter fileWriter = new FileWriter(getFile());
+            FileWriter fileWriter = new FileWriter(getFile(), true);
             fileWriter.append(input);
+            fileWriter.append(System.lineSeparator());
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();

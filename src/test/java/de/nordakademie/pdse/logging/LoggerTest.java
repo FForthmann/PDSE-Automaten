@@ -30,7 +30,7 @@ public class LoggerTest {
                 "0000\n" +
                 "0000\n" +
                 "0000\n" +
-                "0000\n" + "\n";
+                "0000\n" + "\n\n";
         System.setOut(new PrintStream(outputStreamCaptor));
         Logger log = new Logger("file");
         log.addGridToLog(new GridFactory(4, 4, "GridArray").getGrid().toString(), 2);
@@ -56,7 +56,7 @@ public class LoggerTest {
                 "0000\n" +
                 "0000\n" +
                 "0000\n" +
-                "0000\n" + "\r" + "\n";
+                "0000\n" + "\r\n";
         System.setOut(new PrintStream(outputStreamCaptor));
         Logger log = new Logger("console");
         log.addGridToLog(new GridFactory(4, 4, "GridArray").getGrid().toString(), 2);

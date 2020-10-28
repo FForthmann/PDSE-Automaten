@@ -9,12 +9,12 @@ import java.util.HashMap;
  */
 public class GridPoints extends Grid implements IGrid {
     private final int length;
-    private final int depth;
+    private final int width;
     private HashMap<Point, Boolean> grid;
 
-    public GridPoints(int length, int depth) {
+    public GridPoints(int length, int width) {
         this.length = length;
-        this.depth = depth;
+        this.width = width;
         createGrid();
     }
 
@@ -39,7 +39,7 @@ public class GridPoints extends Grid implements IGrid {
 
     @Override
     boolean checkFieldExists(int x, int y) {
-        return x >= 0 && x <= depth - 1 && y >= 0 && y <= length - 1;
+        return x >= 0 && x <= width - 1 && y >= 0 && y <= length - 1;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class GridPoints extends Grid implements IGrid {
 
     private void createGrid() {
         grid = new HashMap<>();
-        for (int i = 0; i < depth; i++) {
+        for (int i = 0; i < width; i++) {
             for (int j = 0; j < length; j++) {
                 grid.put(new Point(i, j), false);
             }
@@ -60,7 +60,7 @@ public class GridPoints extends Grid implements IGrid {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < depth; i++) {
+        for (int i = 0; i < width; i++) {
             for (int j = 0; j < length; j++) {
 
                 if (getValue(new Point(i, j))) {
