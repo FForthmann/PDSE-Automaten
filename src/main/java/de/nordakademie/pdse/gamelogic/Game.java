@@ -102,13 +102,12 @@ public class Game {
     }
 
     public void run() throws Exception {
-        while (this.getContinueGame()) {
             logger.addGridToLog(getGird().toString(), getCurrentIterationAndIterate());
+        while (this.getContinueGame()) {
             IGrid newGrid = gameType.step(getGird());
             checkForTermination(newGrid);
-            if (getContinueGame()) {
                 this.setGrid(newGrid);
-            }
+            logger.addGridToLog(getGird().toString(), getCurrentIterationAndIterate());
         }
     }
 }
