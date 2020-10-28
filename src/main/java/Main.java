@@ -25,7 +25,7 @@ public class Main {
 
     }
 
-    void setPoints(Game game){
+    private void setPoints(Game game){
         String run = "";
         Scanner scanner = new Scanner(System.in);
         while (!run.equalsIgnoreCase("run")){
