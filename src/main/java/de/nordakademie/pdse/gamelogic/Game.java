@@ -7,6 +7,9 @@ import de.nordakademie.pdse.logging.Logger;
 
 /**
  * It summarizes the game logic and creates the game.
+ *
+ * @author Rane Petersen
+ * @since 24.10.2020
  */
 public class Game {
 
@@ -25,8 +28,13 @@ public class Game {
         this.grid = new GridFactory(configReader.getGridLength(), configReader.getGridWidth(), configReader.getDatastructure()).getGrid();
         this.gameType = new GameTypeFactory(configReader).getGameType();
         this.logger = new Logger(configReader.getLoggingType());
-        this.continueGame = true;
         this.iteration = 0;
+        if (configReader.getTerminationType().equals("ttl")) {
+            this.continueGame = timeToLive > 0;
+        } else {
+            this.continueGame = true;
+        }
+
     }
 
     private Boolean getContinueGame() {
@@ -88,11 +96,11 @@ public class Game {
         this.grid = grid;
     }
 
-    public int getIteration() {
+    private int getIteration() {
         return iteration;
     }
 
-    public void setIteration(int iteration) {
+    private void setIteration(int iteration) {
         this.iteration = iteration;
     }
 
