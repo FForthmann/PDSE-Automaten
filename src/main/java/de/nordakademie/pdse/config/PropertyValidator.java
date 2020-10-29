@@ -3,7 +3,7 @@ package de.nordakademie.pdse.config;
 import java.util.Properties;
 
 /**
- *
+ * This class gets a property object from the ConfigReader and checks if all fields are there and if yes, if they are set with valid data.
  */
 public class PropertyValidator {
 
