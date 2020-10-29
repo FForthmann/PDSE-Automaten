@@ -5,8 +5,12 @@ import java.awt.*;
 import java.io.File;
 import java.util.Scanner;
 
+/**
+ * This class is used to start the program initially. It contains the method getPoints, which creates a user interface for the input of active points.
+ */
 public class Main {
     private ConfigReader configReader;
+
     public static void main(String[] args) throws Exception {
 
         Main main = new Main();
