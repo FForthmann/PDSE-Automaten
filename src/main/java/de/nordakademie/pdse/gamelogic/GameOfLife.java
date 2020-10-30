@@ -7,6 +7,8 @@ import java.awt.*;
 
 /**
  * Contains the game logic for the game mode of the Game of Life, has like Parity the step method and additionally because of further game rules an extended logic in the method getPointStatus
+ *
+ * @author Rane Petersen
  */
 public class GameOfLife implements IGameType {
     ConfigReader configReader;

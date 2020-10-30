@@ -13,6 +13,10 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * @author Rane Petersen
+ */
+
 public class ParityTestSetAlive {
 
     GridFactory gridFactory = new GridFactory(3, 3, "GridArray");

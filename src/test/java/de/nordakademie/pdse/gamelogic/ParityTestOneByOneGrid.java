@@ -12,6 +12,10 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * @author Rane Petersen
+ */
+
 public class ParityTestOneByOneGrid {
 
     GridFactory gridFactory = new GridFactory(1, 1, "GridArray");

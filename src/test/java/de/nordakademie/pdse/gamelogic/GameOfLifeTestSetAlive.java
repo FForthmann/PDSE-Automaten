@@ -11,6 +11,10 @@ import java.awt.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * @author Rane Petersen
+ */
+
 public class GameOfLifeTestSetAlive {
 
     GridFactory gridFactory = new GridFactory(3, 3, "GridArray");

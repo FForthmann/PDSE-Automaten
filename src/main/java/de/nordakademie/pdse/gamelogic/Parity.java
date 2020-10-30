@@ -8,6 +8,8 @@ import java.awt.*;
 
 /**
  * This class uses the step method to check whether a point is "dead" or "alive".
+ *
+ * @author Rane Petersen
  */
 public class Parity implements IGameType {
     ConfigReader configReader;
