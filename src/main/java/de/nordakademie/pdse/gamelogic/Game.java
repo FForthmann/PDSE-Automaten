@@ -29,7 +29,7 @@ public class Game {
         this.gameType = new GameTypeFactory(configReader).getGameType();
         this.logger = new Logger(configReader.getLoggingType());
         this.iteration = 0;
-        if (configReader.getTerminationType().equals("ttl")) {
+        if (configReader.getTerminationType().equalsIgnoreCase("ttl")) {
             this.continueGame = timeToLive > 0;
         } else {
             this.continueGame = true;
@@ -75,14 +75,14 @@ public class Game {
     }
 
     private void checkForTermination(IGrid newGrid) {
-        switch (configReader.getTerminationType()) {
+        switch (configReader.getTerminationType().toLowerCase()) {
             case "ttl":
                 this.setContinueGame(!processTimeToLive());
                 break;
-            case "noChange":
+            case "nochange":
                 this.setContinueGame(gridChanged(newGrid));
                 break;
-            case "ttlOrNoChange":
+            case "ttlornochange":
                 this.setContinueGame(!processTimeToLive() && this.gridChanged(newGrid));
                 break;
         }
