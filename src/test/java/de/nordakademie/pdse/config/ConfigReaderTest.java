@@ -12,6 +12,11 @@ import org.junit.rules.TemporaryFolder;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Unit test vor getters and setters in the config class.
+ *
+ * @author Fabian Forthmann
+ */
 public class ConfigReaderTest {
 
     private final static String GAME_TYPE = "Parity";
