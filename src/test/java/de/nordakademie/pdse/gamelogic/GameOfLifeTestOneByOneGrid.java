@@ -13,7 +13,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 /**
- * @author Rane Petersen
+ * @author Rane Petersen, Fabian Forthmann
  */
 
 public class GameOfLifeTestOneByOneGrid {
@@ -26,7 +26,7 @@ public class GameOfLifeTestOneByOneGrid {
     ConfigReader configReader = mock(ConfigReader.class);
 
     @Test
-    public void gridValueFalseMoore() throws Exception {
+    public void oneByOneGridWithFalseValueMoore() throws Exception {
         grid.setValue(point, false);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
@@ -37,7 +37,7 @@ public class GameOfLifeTestOneByOneGrid {
     }
 
     @Test
-    public void gridValueTrueMoore() throws Exception {
+    public void oneByOneGridWithTrueValueMoore() throws Exception {
         grid.setValue(point, true);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
@@ -48,7 +48,7 @@ public class GameOfLifeTestOneByOneGrid {
     }
 
     @Test
-    public void gridValueFalseNeumann() throws Exception {
+    public void oneByOneGridWithFalseValueVonNeumann() throws Exception {
         grid.setValue(point, false);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
@@ -59,7 +59,7 @@ public class GameOfLifeTestOneByOneGrid {
     }
 
     @Test
-    public void gridValueTrueNeumann() throws Exception {
+    public void oneByOneGridWithTrueValueVonNeumann() throws Exception {
         grid.setValue(point, true);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
@@ -70,7 +70,7 @@ public class GameOfLifeTestOneByOneGrid {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void gridValueFalseInvalidModel() throws Exception {
+    public void oneByOneGridWithFalseValueInvalidModel() throws Exception {
         grid.setValue(point, false);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
@@ -81,7 +81,7 @@ public class GameOfLifeTestOneByOneGrid {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void gridValueTrueInvalidModel() throws Exception {
+    public void oneByOneGridWithTrueValueInvalidModel() throws Exception {
         grid.setValue(point, true);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);

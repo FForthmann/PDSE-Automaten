@@ -8,7 +8,7 @@ import de.nordakademie.pdse.logging.Logger;
 /**
  * It summarizes the game logic and creates the game.
  *
- * @author Rane Petersen
+ * @author Rane Petersen, Fabian Forthmann
  * @since 24.10.2020
  */
 public class Game {

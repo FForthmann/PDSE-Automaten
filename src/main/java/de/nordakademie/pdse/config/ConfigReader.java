@@ -5,7 +5,10 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 /**
- * Reads the configuration file and is responsible for the adjustment of properties. With the different GET methods the properties of single values can be returned.
+ * Reads the configuration file and is responsible for the adjustment of properties.
+ * With the different GET methods the properties of single values can be returned.
+ *
+ * @author Fabian Forthmann
  */
 public class ConfigReader {
 

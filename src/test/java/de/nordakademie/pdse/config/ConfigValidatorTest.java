@@ -4,6 +4,11 @@ import org.junit.Test;
 
 import java.util.Properties;
 
+/**
+ * Unit tests for the validation of the given property parameters.
+ *
+ * @author Fabian Forthmann
+ */
 public class ConfigValidatorTest {
 
     private final static String GAME_TYPE = "game.type";

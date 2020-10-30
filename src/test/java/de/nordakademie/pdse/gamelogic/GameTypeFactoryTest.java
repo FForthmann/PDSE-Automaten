@@ -33,7 +33,7 @@ public class GameTypeFactoryTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void invalidGameType() {
+    public void tryReturnWithinvalidGameType() {
         when(configReader.getGameType()).thenReturn("null");
         IGameType gameType = new GameTypeFactory(configReader).getGameType();
     }

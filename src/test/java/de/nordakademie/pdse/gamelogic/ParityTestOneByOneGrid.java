@@ -8,12 +8,13 @@ import org.mockito.Mock;
 
 import java.awt.*;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 /**
- * @author Rane Petersen
+ * @author Rane Petersen, Fabian Forthmann
  */
 
 public class ParityTestOneByOneGrid {
@@ -26,8 +27,7 @@ public class ParityTestOneByOneGrid {
     ConfigReader configReader = mock(ConfigReader.class);
 
     @Test(expected = IllegalArgumentException.class)
-    public void emptyGridMoore() throws Exception {
-        grid.setValue(point, false);
+    public void emptyParityGridMooreInvalid() throws Exception {
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("Moore");
@@ -36,7 +36,7 @@ public class ParityTestOneByOneGrid {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void trueGridMoore() throws Exception {
+    public void trueParityGridMooreInvalid() throws Exception {
         grid.setValue(point, true);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
@@ -46,22 +46,22 @@ public class ParityTestOneByOneGrid {
     }
 
     @Test
-    public void emptyGridNeumann() throws Exception {
+    public void emptyParityGridVonNeumann() throws Exception {
         grid.setValue(point, false);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("vonNeumann");
         Parity parity = new Parity(configReader);
-        assertTrue(parity.step(grid).getValue(point) == false);
+        assertFalse(parity.step(grid).getValue(point));
     }
 
     @Test
-    public void trueGridNeumann() throws Exception {
+    public void trueParityGridVonNeumann() throws Exception {
         grid.setValue(point, true);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
         when(configReader.getModel()).thenReturn("vonNeumann");
         Parity parity = new Parity(configReader);
-        assertTrue(parity.step(grid).getValue(point) == false);
+        assertFalse(parity.step(grid).getValue(point));
     }
 }

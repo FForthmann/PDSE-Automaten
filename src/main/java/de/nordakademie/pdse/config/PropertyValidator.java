@@ -4,6 +4,8 @@ import java.util.Properties;
 
 /**
  * This class gets a property object from the ConfigReader and checks if all fields are there and if yes, if they are set with valid data.
+ *
+ * @author Fabian Forthmann
  */
 public class PropertyValidator {
 
@@ -19,25 +21,25 @@ public class PropertyValidator {
     public void validateConfig(Properties prop) {
         boolean validDataInFile = true;
         try {
-            if ("ttlOrNoChange".equals(prop.getProperty(TERMINATION_TYPE_KEY)) || "ttl".equals(prop.getProperty(TERMINATION_TYPE_KEY))) {
+            if ("ttlOrNoChange".equalsIgnoreCase(prop.getProperty(TERMINATION_TYPE_KEY)) || "ttl".equalsIgnoreCase(prop.getProperty(TERMINATION_TYPE_KEY))) {
                 if (Integer.parseInt(prop.getProperty(TIME_TO_LIVE_KEY)) < 0) {
                     validDataInFile = false;
                 }
-            } else if (!"noChange".equals(prop.getProperty(TERMINATION_TYPE_KEY))) {
+            } else if (!"noChange".equalsIgnoreCase(prop.getProperty(TERMINATION_TYPE_KEY))) {
                 validDataInFile = false;
             } else {
                 validDataInFile = false;
             }
-            if (!"Parity".equals(prop.getProperty(GAME_TYPE_KEY)) && !"GameOfLife".equals(prop.getProperty(GAME_TYPE_KEY))) {
+            if (!"Parity".equalsIgnoreCase(prop.getProperty(GAME_TYPE_KEY)) && !"GameOfLife".equalsIgnoreCase(prop.getProperty(GAME_TYPE_KEY))) {
                 validDataInFile = false;
             }
-            if (!"Moore".equals(prop.getProperty(GAME_MODEL_KEY)) && !"vonNeumann".equals(prop.getProperty(GAME_MODEL_KEY))) {
+            if (!"Moore".equalsIgnoreCase(prop.getProperty(GAME_MODEL_KEY)) && !"vonNeumann".equalsIgnoreCase(prop.getProperty(GAME_MODEL_KEY))) {
                 validDataInFile = false;
             }
-            if (!"GridPoints".equals(prop.getProperty(DATA_STRUCTURE_KEY)) && !"GridArray".equals(prop.getProperty(DATA_STRUCTURE_KEY))) {
+            if (!"GridPoints".equalsIgnoreCase(prop.getProperty(DATA_STRUCTURE_KEY)) && !"GridArray".equalsIgnoreCase(prop.getProperty(DATA_STRUCTURE_KEY))) {
                 validDataInFile = false;
             }
-            if (!"console".equals(prop.getProperty(LOGGING_TYPE_KEY)) && !"file".equals(prop.getProperty(LOGGING_TYPE_KEY)) && !"consoleAndFile".equals(prop.getProperty(LOGGING_TYPE_KEY)) && !"disable".equals(prop.getProperty(LOGGING_TYPE_KEY))) {
+            if (!"console".equalsIgnoreCase(prop.getProperty(LOGGING_TYPE_KEY)) && !"file".equalsIgnoreCase(prop.getProperty(LOGGING_TYPE_KEY)) && !"consoleAndFile".equalsIgnoreCase(prop.getProperty(LOGGING_TYPE_KEY)) && !"disable".equalsIgnoreCase(prop.getProperty(LOGGING_TYPE_KEY))) {
                 validDataInFile = false;
             }
             if (Integer.parseInt(prop.getProperty(LENGTH_KEY)) < 1) {
