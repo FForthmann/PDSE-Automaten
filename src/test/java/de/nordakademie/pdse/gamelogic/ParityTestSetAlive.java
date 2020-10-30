@@ -30,7 +30,7 @@ public class ParityTestSetAlive {
     }
 
     @Test
-    public void invertGrid() throws Exception {
+    public void trueValueToFalseThroughStepsInGrid() throws Exception {
         grid.setValue(createPoint(1, 1), true);
         when(configReader.getGridLength()).thenReturn(3);
         when(configReader.getGridWidth()).thenReturn(3);

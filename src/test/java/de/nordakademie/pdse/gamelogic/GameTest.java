@@ -22,7 +22,6 @@ import static org.mockito.Mockito.when;
 
 public class GameTest {
 
-    private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @After
@@ -98,7 +97,7 @@ public class GameTest {
                 assertFalse(checkGrid.getValue(new Point(length, width)));
             }
         }
-        String expectedOutput = "###0\n"+
+        String expectedOutput = "###0\n" +
                 "000\n" +
                 "010\n" +
                 "000\n" +
@@ -111,7 +110,7 @@ public class GameTest {
                 "###2\n" +
                 "000\n" +
                 "000\n" +
-                "000\n"+
+                "000\n" +
                 "\r\n";
         assertArrayEquals(expectedOutput.toCharArray(), outputStreamCaptor.toString().toCharArray());
     }
