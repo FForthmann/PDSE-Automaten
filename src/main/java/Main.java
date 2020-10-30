@@ -43,12 +43,16 @@ public class Main {
                     {
                         game.getGird().setValue(new Point(Integer.parseInt(s[0]), Integer.parseInt(s[1])), true);
                     }
+                } else if (temp.equalsIgnoreCase("run")) {
+                    run = "run";
+                } else {
+                    System.out.println("falsche Eingabe");
                 }
-            } else if (temp.equalsIgnoreCase("run")) {
-                run = "run";
-            } else {
-                System.out.println("falsche Eingabe");
+
             }
+
         }
+
     }
 }
+
