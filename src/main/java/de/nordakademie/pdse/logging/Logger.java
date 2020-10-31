@@ -18,11 +18,21 @@ import java.time.format.DateTimeFormatter;
 public class Logger {
     private final String loggingType;
     private File file;
+    private String fileName;
 
+    public Logger(String loggingType, String fileName) {
+        this.loggingType = loggingType;
+        if (!"console".equals(this.loggingType)) {
+            this.fileName = fileName + ".log";
+            createFile();
+        }
+
+    }
 
     public Logger(String loggingType) {
         this.loggingType = loggingType;
         if (!"console".equals(this.loggingType)) {
+            this.fileName = "GridLog" + getCurrentTime() + ".log";
             createFile();
         }
     }
@@ -51,13 +61,13 @@ public class Logger {
     }
 
     private void createFile() {
-        Path path = Paths.get("GridLog" + getCurrentTime() + ".txt");
+        Path path = Paths.get(fileName);
         try {
             Files.createFile(path);
             file = new File(String.valueOf(path));
 
         } catch (IOException ignored) {
-
+            file = new File(String.valueOf(path));
         }
     }
 
@@ -81,8 +91,7 @@ public class Logger {
             fileWriter.append(input);
             fileWriter.append(System.lineSeparator());
             fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
     }
 }
