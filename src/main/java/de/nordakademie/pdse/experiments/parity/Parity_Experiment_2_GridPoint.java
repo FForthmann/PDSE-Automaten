@@ -7,6 +7,9 @@ import de.nordakademie.pdse.grid.IGrid;
 import java.awt.*;
 import java.io.File;
 
+/**
+ * @author Georg Mezlaw, Rane Petersen
+ */
 public class Parity_Experiment_2_GridPoint {
     private static Point createPoint(int x, int y) {
         return new Point(x, y);
@@ -20,6 +23,7 @@ public class Parity_Experiment_2_GridPoint {
         configReader.setGameType("Parity");
         configReader.setTerminationType("ttl");
         configReader.setTimeToLive("100");
+        configReader.setLoggingType("file");
         configReader.setDatastructure("GridPoints");
         Game game = new Game(configReader);
         IGrid grid = game.getGird();
