@@ -22,7 +22,7 @@ public class Logger {
 
     public Logger(String loggingType) {
         this.loggingType = loggingType;
-        if (!"console".equals(this.loggingType)) {
+        if (!"console".equalsIgnoreCase(this.loggingType)) {
             createFile();
         }
     }
@@ -31,8 +31,8 @@ public class Logger {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("###" + iteration + "\n");
         stringBuilder.append(grid);
-        switch (loggingType) {
-            case "consoleAndFile":
+        switch (loggingType.toLowerCase()) {
+            case "consoleandfile":
                 writeLogToFile(stringBuilder.toString());
                 writeLogToConsole(stringBuilder.toString());
                 break;
@@ -43,10 +43,7 @@ public class Logger {
                 writeLogToConsole(stringBuilder.toString());
                 break;
             case "disable":
-
                 break;
-            default:
-                throw new IllegalArgumentException("Invalide LoggingType");
         }
     }
 

@@ -1,4 +1,5 @@
 package de.nordakademie.pdse.grid;
+
 /**
  * This factory is used to create multiple object instances, inherits from the interface IGrid and uses the method getGrid to get the current grid.
  *
@@ -17,12 +18,10 @@ public class GridFactory {
     }
 
     public IGrid getGrid() {
-        if ("GridArray".equals(dataStructure)) {
+        if ("GridArray".equalsIgnoreCase(dataStructure)) {
             return new GridArray(length, width);
-        } else if ("GridPoints".equals(dataStructure)) {
-            return new GridPoints(length, width);
         } else {
-            throw new IllegalArgumentException("Invalid DataStrucutre");
+            return new GridPoints(length, width);
         }
     }
 }

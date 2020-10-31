@@ -26,7 +26,7 @@ public class GameOfLifeTestOneByOneGrid {
     ConfigReader configReader = mock(ConfigReader.class);
 
     @Test
-    public void oneByOneGridWithFalseValueMoore() throws Exception {
+    public void oneByOneGridWithFalseValueMoore(){
         grid.setValue(point, false);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
@@ -37,7 +37,7 @@ public class GameOfLifeTestOneByOneGrid {
     }
 
     @Test
-    public void oneByOneGridWithTrueValueMoore() throws Exception {
+    public void oneByOneGridWithTrueValueMoore(){
         grid.setValue(point, true);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
@@ -48,7 +48,7 @@ public class GameOfLifeTestOneByOneGrid {
     }
 
     @Test
-    public void oneByOneGridWithFalseValueVonNeumann() throws Exception {
+    public void oneByOneGridWithFalseValueVonNeumann() {
         grid.setValue(point, false);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
@@ -59,7 +59,7 @@ public class GameOfLifeTestOneByOneGrid {
     }
 
     @Test
-    public void oneByOneGridWithTrueValueVonNeumann() throws Exception {
+    public void oneByOneGridWithTrueValueVonNeumann() {
         grid.setValue(point, true);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
@@ -67,27 +67,5 @@ public class GameOfLifeTestOneByOneGrid {
 
         GameOfLife gameOfLife = new GameOfLife(configReader);
         assertFalse(gameOfLife.step(grid).getValue(point));
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void oneByOneGridWithFalseValueInvalidModel() throws Exception {
-        grid.setValue(point, false);
-        when(configReader.getGridLength()).thenReturn(1);
-        when(configReader.getGridWidth()).thenReturn(1);
-        when(configReader.getModel()).thenReturn("");
-
-        GameOfLife gameOfLife = new GameOfLife(configReader);
-        gameOfLife.step(grid);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void oneByOneGridWithTrueValueInvalidModel() throws Exception {
-        grid.setValue(point, true);
-        when(configReader.getGridLength()).thenReturn(1);
-        when(configReader.getGridWidth()).thenReturn(1);
-        when(configReader.getModel()).thenReturn("");
-
-        GameOfLife gameOfLife = new GameOfLife(configReader);
-        gameOfLife.step(grid);
     }
 }

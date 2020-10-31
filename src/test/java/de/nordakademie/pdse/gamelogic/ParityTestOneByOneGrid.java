@@ -26,27 +26,8 @@ public class ParityTestOneByOneGrid {
     @Mock
     ConfigReader configReader = mock(ConfigReader.class);
 
-    @Test(expected = IllegalArgumentException.class)
-    public void emptyParityGridMooreInvalid() throws Exception {
-        when(configReader.getGridLength()).thenReturn(1);
-        when(configReader.getGridWidth()).thenReturn(1);
-        when(configReader.getModel()).thenReturn("Moore");
-        Parity parity = new Parity(configReader);
-        parity.step(grid);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void trueParityGridMooreInvalid() throws Exception {
-        grid.setValue(point, true);
-        when(configReader.getGridLength()).thenReturn(1);
-        when(configReader.getGridWidth()).thenReturn(1);
-        when(configReader.getModel()).thenReturn("Moore");
-        Parity parity = new Parity(configReader);
-        parity.step(grid);
-    }
-
     @Test
-    public void emptyParityGridVonNeumann() throws Exception {
+    public void emptyParityGridVonNeumann() {
         grid.setValue(point, false);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);
@@ -56,7 +37,7 @@ public class ParityTestOneByOneGrid {
     }
 
     @Test
-    public void trueParityGridVonNeumann() throws Exception {
+    public void trueParityGridVonNeumann() {
         grid.setValue(point, true);
         when(configReader.getGridLength()).thenReturn(1);
         when(configReader.getGridWidth()).thenReturn(1);

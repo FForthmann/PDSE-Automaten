@@ -23,22 +23,20 @@ public class GameOfLife implements IGameType {
         CopyGrid copyGrid = new CopyGrid(oldGrid);
         IGrid newGrid = oldGrid;
         Point point;
-        if ("Moore".equals(configReader.getModel())) {
-            for (int width = 0; width < configReader.getGridLength() ; width++) {
+        if ("Moore".equalsIgnoreCase(configReader.getModel())) {
+            for (int width = 0; width < configReader.getGridLength(); width++) {
                 for (int length = 0; length < configReader.getGridWidth(); length++) {
                     point = new Point(length, width);
                     newGrid.setValue(point, getPointStatus(copyGrid.getGrid().getValue(point), copyGrid.getGrid().countMooreActiveNeighbors(point)));
                 }
             }
-        } else if ("vonNeumann".equals(configReader.getModel())) {
+        } else if ("vonNeumann".equalsIgnoreCase(configReader.getModel())) {
             for (int width = 0; width < configReader.getGridLength(); width++) {
                 for (int length = 0; length < configReader.getGridWidth(); length++) {
                     point = new Point(length, width);
                     newGrid.setValue(point, getPointStatus(copyGrid.getGrid().getValue(point), copyGrid.getGrid().countVonNeumannActiveNeighbors(point)));
                 }
             }
-        } else {
-            throw new IllegalArgumentException("Invalid NeighborModel");
         }
         return newGrid;
     }

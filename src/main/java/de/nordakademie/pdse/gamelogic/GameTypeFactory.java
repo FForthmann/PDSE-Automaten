@@ -15,12 +15,10 @@ public class GameTypeFactory {
     }
 
     public IGameType getGameType() {
-        if (configReader.getGameType().equals("Parity")) {
+        if (configReader.getGameType().equalsIgnoreCase("Parity")) {
             return new Parity(configReader);
-        } else if (configReader.getGameType().equals("GameOfLife")) {
-            return new GameOfLife(configReader);
         } else {
-            throw new IllegalArgumentException("Invalid GameType");
+            return new GameOfLife(configReader);
         }
     }
 }

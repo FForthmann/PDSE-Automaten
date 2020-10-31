@@ -18,10 +18,10 @@ public class Parity implements IGameType {
         this.configReader = configReader;
     }
 
-    public IGrid step(IGrid oldGrid) throws Exception {
+    public IGrid step(IGrid oldGrid) {
         CopyGrid copyGrid = new CopyGrid(oldGrid);
         IGrid newGrid = oldGrid;
-        if ("vonNeumann".equals(configReader.getModel())) {
+        if ("vonNeumann".equalsIgnoreCase(configReader.getModel())) {
             Point point;
             for (int length = 0; length < configReader.getGridLength(); length++) {
                 for (int width = 0; width < configReader.getGridWidth(); width++) {
@@ -29,8 +29,6 @@ public class Parity implements IGameType {
                     newGrid.setValue(point, copyGrid.getGrid().countVonNeumannActiveNeighbors(point) % 2 == 1);
                 }
             }
-        } else {
-            throw new IllegalArgumentException("Invalid NeighborModel");
         }
         return newGrid;
     }
