@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.io.*;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
 
 public class LoggerTest {
 
@@ -34,11 +35,11 @@ public class LoggerTest {
         System.setOut(new PrintStream(outputStreamCaptor));
         Logger log = new Logger("file");
         log.addGridToLog(new GridFactory(4, 4, "GridArray").getGrid().toString(), 2);
-        StringBuilder current= new StringBuilder();
+        StringBuilder current = new StringBuilder();
         String line;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(log.getFile()));
-            while ((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
                 current.append(line).append("\n");
             }
         } catch (IOException e) {
@@ -60,10 +61,16 @@ public class LoggerTest {
         System.setOut(new PrintStream(outputStreamCaptor));
         Logger log = new Logger("console");
         log.addGridToLog(new GridFactory(4, 4, "GridArray").getGrid().toString(), 2);
-        int x  = 0;
+        int x = 0;
         String current = outputStreamCaptor.toString();
         assertArrayEquals(expectedOutput.toCharArray(), current.toCharArray());
 
+    }
+
+    @Test
+    public void testCustomConstructor() {
+        Logger log = new Logger("file", "experiment1");
+        assertTrue(log.getFile().exists());
     }
 
 }
