@@ -36,12 +36,12 @@ public class Game {
         }
     }
 
-    public Game(ConfigReader configReader, String loggingFileNAme) {
+    public Game(ConfigReader configReader, String logFileName) {
         this.configReader = configReader;
         this.timeToLive = configReader.getTimeToLive();
         this.grid = new GridFactory(configReader.getGridLength(), configReader.getGridWidth(), configReader.getDatastructure()).getGrid();
         this.gameType = new GameTypeFactory(configReader).getGameType();
-        this.logger = new Logger(configReader.getLoggingType(), loggingFileNAme);
+        this.logger = new Logger(configReader.getLoggingType(), logFileName);
         this.iteration = 0;
         if (configReader.getTerminationType().equals("ttl")) {
             this.continueGame = timeToLive > 0;
