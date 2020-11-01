@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.io.*;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
 
 public class LoggerTest {
 
@@ -64,6 +65,10 @@ public class LoggerTest {
 
     }
 
-
+    @Test
+    public void testCustomConstructor() {
+        Logger log = new Logger("file", "experiment1");
+        assertTrue(log.getFile().exists());
+    }
 
 }
