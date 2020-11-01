@@ -28,33 +28,33 @@ public class GameOfLife_Experiment_1_GridPoint {
         configReader.setDatastructure("GridPoints");
         Game game = new Game(configReader);
         IGrid grid = game.getGird();
-        grid.setValue(createPoint(19, 18), true);
-        grid.setValue(createPoint(20, 18), true);
-        grid.setValue(createPoint(22, 18), true);
-        grid.setValue(createPoint(23, 18), true);
-
-        grid.setValue(createPoint(19, 19), true);
-        grid.setValue(createPoint(20, 19), true);
-        grid.setValue(createPoint(22, 19), true);
-        grid.setValue(createPoint(23, 19), true);
-
-        grid.setValue(createPoint(19, 20), true);
-        grid.setValue(createPoint(19, 20), true);
-
+        grid.setValue(createPoint(18, 18), true);
+        grid.setValue(createPoint(18, 19), true);
         grid.setValue(createPoint(18, 21), true);
-        grid.setValue(createPoint(20, 21), true);
-        grid.setValue(createPoint(22, 21), true);
-        grid.setValue(createPoint(24, 21), true);
-
         grid.setValue(createPoint(18, 22), true);
-        grid.setValue(createPoint(20, 22), true);
-        grid.setValue(createPoint(22, 22), true);
-        grid.setValue(createPoint(24, 22), true);
 
-        grid.setValue(createPoint(18, 23), true);
-        grid.setValue(createPoint(19, 23), true);
+        grid.setValue(createPoint(19, 18), true);
+        grid.setValue(createPoint(19, 19), true);
+        grid.setValue(createPoint(19, 21), true);
+        grid.setValue(createPoint(19, 22), true);
+
+        grid.setValue(createPoint(20, 19), true);
+        grid.setValue(createPoint(20, 21), true);
+
+        grid.setValue(createPoint(21, 17), true);
+        grid.setValue(createPoint(21, 19), true);
+        grid.setValue(createPoint(21, 21), true);
+        grid.setValue(createPoint(21, 23), true);
+
+        grid.setValue(createPoint(22, 18), true);
+        grid.setValue(createPoint(22, 19), true);
+        grid.setValue(createPoint(22, 21), true);
+        grid.setValue(createPoint(22, 23), true);
+
+        grid.setValue(createPoint(23, 17), true);
+        grid.setValue(createPoint(23, 18), true);
+        grid.setValue(createPoint(23, 22), true);
         grid.setValue(createPoint(23, 23), true);
-        grid.setValue(createPoint(24, 23), true);
 
         game.setGrid(grid);
         game.run();
