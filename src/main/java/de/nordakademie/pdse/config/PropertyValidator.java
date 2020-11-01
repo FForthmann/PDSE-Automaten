@@ -27,8 +27,6 @@ public class PropertyValidator {
                 }
             } else if (!"noChange".equalsIgnoreCase(prop.getProperty(TERMINATION_TYPE_KEY))) {
                 validDataInFile = false;
-            } else {
-                validDataInFile = false;
             }
             if (!"Parity".equalsIgnoreCase(prop.getProperty(GAME_TYPE_KEY)) && !"GameOfLife".equalsIgnoreCase(prop.getProperty(GAME_TYPE_KEY))) {
                 validDataInFile = false;
