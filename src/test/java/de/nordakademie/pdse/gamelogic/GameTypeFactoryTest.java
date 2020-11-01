@@ -31,11 +31,4 @@ public class GameTypeFactoryTest {
         assertEquals(gameType.getClass(), Parity.class);
 
     }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void tryReturnWithinvalidGameType() {
-        when(configReader.getGameType()).thenReturn("null");
-        IGameType gameType = new GameTypeFactory(configReader).getGameType();
-    }
-
 } 

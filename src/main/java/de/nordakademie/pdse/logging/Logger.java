@@ -41,8 +41,8 @@ public class Logger {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("###" + iteration + "\n");
         stringBuilder.append(grid);
-        switch (loggingType) {
-            case "consoleAndFile":
+        switch (loggingType.toLowerCase()) {
+            case "consoleandfile":
                 writeLogToFile(stringBuilder.toString());
                 writeLogToConsole(stringBuilder.toString());
                 break;
@@ -53,10 +53,7 @@ public class Logger {
                 writeLogToConsole(stringBuilder.toString());
                 break;
             case "disable":
-
                 break;
-            default:
-                throw new IllegalArgumentException("Invalide LoggingType");
         }
     }
 
@@ -72,7 +69,7 @@ public class Logger {
     }
 
     private String getCurrentTime() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH-mm-ss");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH-mm-ss-SSS");
         LocalDateTime localDateTime = LocalDateTime.now();
         return dateTimeFormatter.format(localDateTime);
     }

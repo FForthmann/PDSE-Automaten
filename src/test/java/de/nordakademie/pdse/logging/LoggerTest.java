@@ -15,14 +15,14 @@ public class LoggerTest {
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
-    @After
-    public void after() {
-        outputStreamCaptor.reset();
-    }
-
     @Before
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    @After
+    public void after() {
+        outputStreamCaptor.reset();
     }
 
     @Test
@@ -32,7 +32,6 @@ public class LoggerTest {
                 "0000\n" +
                 "0000\n" +
                 "0000\n" + "\n\n";
-        System.setOut(new PrintStream(outputStreamCaptor));
         Logger log = new Logger("file");
         log.addGridToLog(new GridFactory(4, 4, "GridArray").getGrid().toString(), 2);
         StringBuilder current = new StringBuilder();
@@ -61,7 +60,6 @@ public class LoggerTest {
         System.setOut(new PrintStream(outputStreamCaptor));
         Logger log = new Logger("console");
         log.addGridToLog(new GridFactory(4, 4, "GridArray").getGrid().toString(), 2);
-        int x = 0;
         String current = outputStreamCaptor.toString();
         assertArrayEquals(expectedOutput.toCharArray(), current.toCharArray());
 

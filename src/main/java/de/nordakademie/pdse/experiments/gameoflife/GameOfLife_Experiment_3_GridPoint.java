@@ -5,6 +5,9 @@ import de.nordakademie.pdse.gamelogic.Game;
 
 import java.io.File;
 
+/**
+ * @author Georg Mezlaw, Rane Petersen
+ */
 public class GameOfLife_Experiment_3_GridPoint {
 
     public static void main(String[] args) throws Exception {
@@ -15,6 +18,7 @@ public class GameOfLife_Experiment_3_GridPoint {
         configReader.setGameType("GameOfLife");
         configReader.setTerminationType("ttl");
         configReader.setTimeToLive("100");
+        configReader.setLoggingType("file");
         configReader.setDatastructure("GridPoints");
         Game game = new Game(configReader);
         game.run();

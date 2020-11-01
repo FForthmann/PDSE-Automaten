@@ -7,6 +7,9 @@ import de.nordakademie.pdse.grid.IGrid;
 import java.awt.*;
 import java.io.File;
 
+/**
+ * @author Georg Mezlaw, Rane Petersen
+ */
 public class GameOfLife_Experiment_2_GridPoints {
 
     private static Point createPoint(int x, int y) {
@@ -21,8 +24,9 @@ public class GameOfLife_Experiment_2_GridPoints {
         configReader.setGameType("GameOfLife");
         configReader.setTerminationType("ttl");
         configReader.setTimeToLive("100");
-        Game game = new Game(configReader);
+        configReader.setLoggingType("file");
         configReader.setDatastructure("GridPoint");
+        Game game = new Game(configReader);
         IGrid grid = game.getGird();
         for (int length = 0; length < configReader.getGridLength(); length++) {
             for (int width = 0; width < configReader.getGridWidth(); width++) {

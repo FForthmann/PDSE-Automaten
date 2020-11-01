@@ -1,6 +1,7 @@
 package de.nordakademie.pdse.gamelogic;
 
 import de.nordakademie.pdse.config.ConfigReader;
+import de.nordakademie.pdse.grid.CopyGrid;
 import de.nordakademie.pdse.grid.GridFactory;
 import de.nordakademie.pdse.grid.IGrid;
 import de.nordakademie.pdse.logging.Logger;
@@ -29,7 +30,7 @@ public class Game {
         this.gameType = new GameTypeFactory(configReader).getGameType();
         this.logger = new Logger(configReader.getLoggingType());
         this.iteration = 0;
-        if (configReader.getTerminationType().equals("ttl")) {
+        if (configReader.getTerminationType().equalsIgnoreCase("ttl")) {
             this.continueGame = timeToLive > 0;
         } else {
             this.continueGame = true;
@@ -80,7 +81,7 @@ public class Game {
     }
 
     private boolean gridChanged(IGrid grid) {
-        if (this.grid.equals(grid)) {
+        if (this.grid.toString().equals(grid.toString())) {
             return false;
         } else {
             return true;
@@ -88,14 +89,14 @@ public class Game {
     }
 
     private void checkForTermination(IGrid newGrid) {
-        switch (configReader.getTerminationType()) {
+        switch (configReader.getTerminationType().toLowerCase()) {
             case "ttl":
                 this.setContinueGame(!processTimeToLive());
                 break;
-            case "noChange":
+            case "nochange":
                 this.setContinueGame(gridChanged(newGrid));
                 break;
-            case "ttlOrNoChange":
+            case "ttlornochange":
                 this.setContinueGame(!processTimeToLive() && this.gridChanged(newGrid));
                 break;
         }
@@ -128,10 +129,16 @@ public class Game {
     public void run() throws Exception {
         logger.addGridToLog(getGird().toString(), getCurrentIterationAndIterate());
         while (this.getContinueGame()) {
-            IGrid newGrid = gameType.step(getGird());
+            CopyGrid copyGrid = new CopyGrid(getGird());
+            IGrid newGrid = gameType.step(copyGrid.getGrid());
             checkForTermination(newGrid);
-            this.setGrid(newGrid);
-            logger.addGridToLog(getGird().toString(), getCurrentIterationAndIterate());
+            if (gridChanged(newGrid) && !this.configReader.getTerminationType().equalsIgnoreCase("ttl")) {
+                this.setGrid(newGrid);
+                logger.addGridToLog(getGird().toString(), getCurrentIterationAndIterate());
+            } else if (this.configReader.getTerminationType().equalsIgnoreCase("ttl")){
+                this.setGrid(newGrid);
+                logger.addGridToLog(getGird().toString(), getCurrentIterationAndIterate());
+            }
         }
     }
 }
