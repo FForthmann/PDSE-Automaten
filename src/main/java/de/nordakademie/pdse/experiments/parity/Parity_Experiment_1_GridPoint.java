@@ -26,7 +26,7 @@ public class Parity_Experiment_1_GridPoint {
         configReader.setTimeToLive("100");
         configReader.setLoggingType("file");
         configReader.setDatastructure("GridPoint");
-        Game game = new Game(configReader);
+        Game game = new Game(configReader,"Parity_Experiment_1_GridPoint");
         IGrid grid = game.getGird();
         grid.setValue(createPoint(200, 200), true);
         grid.setValue(createPoint(200, 201), true);

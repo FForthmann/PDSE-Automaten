@@ -20,7 +20,7 @@ public class GameOfLife_Experiment_3_GridArray {
         configReader.setTimeToLive("100");
         configReader.setLoggingType("file");
         configReader.setDatastructure("GridArray");
-        Game game = new Game(configReader);
+        Game game = new Game(configReader,"GameOfLife_Experiment_3_GridArray");
         game.run();
     }
 

@@ -26,7 +26,7 @@ public class GameOfLife_Experiment_2_GridPoints {
         configReader.setTimeToLive("100");
         configReader.setLoggingType("file");
         configReader.setDatastructure("GridPoint");
-        Game game = new Game(configReader);
+        Game game = new Game(configReader,"GameOfLife_Experiment_2_GridPoints");
         IGrid grid = game.getGird();
         for (int length = 0; length < configReader.getGridLength(); length++) {
             for (int width = 0; width < configReader.getGridWidth(); width++) {

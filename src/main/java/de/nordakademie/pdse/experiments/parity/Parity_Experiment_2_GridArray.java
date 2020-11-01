@@ -25,7 +25,7 @@ public class Parity_Experiment_2_GridArray {
         configReader.setTimeToLive("100");
         configReader.setLoggingType("file");
         configReader.setDatastructure("GridArray");
-        Game game = new Game(configReader);
+        Game game = new Game(configReader,"Parity_Experiment_2_GridArray");
         IGrid grid = game.getGird();
         for (int length = 0; length < configReader.getGridLength(); length++) {
             for (int width = 0; width < configReader.getGridWidth(); width++) {

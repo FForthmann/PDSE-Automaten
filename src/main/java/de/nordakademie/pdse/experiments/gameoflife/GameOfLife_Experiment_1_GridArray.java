@@ -26,7 +26,7 @@ public class GameOfLife_Experiment_1_GridArray {
         configReader.setTimeToLive("100");
         configReader.setLoggingType("file");
         configReader.setDatastructure("GridArray");
-        Game game = new Game(configReader);
+        Game game = new Game(configReader,"GameOfLife_Experiment_1_GridArray");
         IGrid grid = game.getGird();
 
         grid.setValue(createPoint(18, 18), true);
