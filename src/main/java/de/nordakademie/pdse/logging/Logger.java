@@ -22,7 +22,7 @@ public class Logger {
 
     public Logger(String loggingType, String fileName) {
         this.loggingType = loggingType;
-        if (!"console".equals(this.loggingType)) {
+        if (!"console".equalsIgnoreCase(this.loggingType)) {
             this.fileName = fileName + ".log";
             createFile();
         }
@@ -31,7 +31,7 @@ public class Logger {
 
     public Logger(String loggingType) {
         this.loggingType = loggingType;
-        if (!"console".equals(this.loggingType)) {
+        if (!"console".equalsIgnoreCase(this.loggingType)) {
             this.fileName = "GridLog" + getCurrentTime() + ".log";
             createFile();
         }
