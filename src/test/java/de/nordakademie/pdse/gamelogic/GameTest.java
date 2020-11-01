@@ -10,6 +10,7 @@ import org.mockito.Mock;
 
 import java.awt.*;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.PrintStream;
 
 import static org.junit.Assert.*;
@@ -113,5 +114,29 @@ public class GameTest {
                 "000\n" +
                 "\r\n";
         assertArrayEquals(expectedOutput.toCharArray(), outputStreamCaptor.toString().toCharArray());
+    }
+
+    @Test
+    public void secondaryConstructor() throws Exception {
+        GridFactory gridFactory = new GridFactory(3, 3, "GridArray");
+        IGrid grid = gridFactory.getGrid();
+        String fileName = "testSecondaryConstructor";
+        assertFalse(new File(fileName + ".log").exists());
+        when(configReader.getLoggingType()).thenReturn("file");
+        when(configReader.getDatastructure()).thenReturn("GridArray");
+        when(configReader.getGameType()).thenReturn("Parity");
+        when(configReader.getModel()).thenReturn("vonNeumann");
+        when(configReader.getTerminationType()).thenReturn("ttl");
+        when(configReader.getGridLength()).thenReturn(3);
+        when(configReader.getGridWidth()).thenReturn(3);
+        when(configReader.getTimeToLive()).thenReturn(0);
+        grid.setValue(new Point(1, 1), true);
+        Game game = new Game(configReader, fileName);
+        assertTrue(new File(fileName + ".log").exists());
+        game.setGrid(grid);
+        game.run();
+        assertTrue(new File(fileName + ".log").exists());
+        new File(fileName + ".log").delete();
+        assertFalse(new File(fileName + ".log").exists());
     }
 }
