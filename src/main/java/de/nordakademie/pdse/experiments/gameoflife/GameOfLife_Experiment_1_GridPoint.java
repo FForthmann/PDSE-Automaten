@@ -46,7 +46,7 @@ public class GameOfLife_Experiment_1_GridPoint {
         grid.setValue(createPoint(21, 21), true);
         grid.setValue(createPoint(21, 23), true);
 
-        grid.setValue(createPoint(22, 18), true);
+        grid.setValue(createPoint(22, 17), true);
         grid.setValue(createPoint(22, 19), true);
         grid.setValue(createPoint(22, 21), true);
         grid.setValue(createPoint(22, 23), true);
